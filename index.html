@@ -1,3088 +1,941 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#08090c">
-<title>PROFIL BAS FC | Club Pro FC 27</title>
-
 <meta name="description" content="PROFIL BAS FC : club Pro Clubs sur EA SPORTS FC 27. Le collectif avant les individualités. Rejoins l'aventure !">
 <meta property="og:type" content="website">
 <meta property="og:title" content="PROFIL BAS FC | Club Pro Clubs FC 27">
 <meta property="og:description" content="Le collectif avant les individualités. Une équipe, une ambition, une identité. Rejoins PROFIL BAS FC !">
 <meta property="og:image" content="https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=1200">
 <meta name="twitter:card" content="summary_large_image">
-
+<title>PROFIL BAS FC | Club Pro Clubs FC 27</title>
 <script>document.documentElement.classList.add("js");</script>
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-
 <style>
-:root{
- --bg:#07080b;
- --panel:#101219;
- --panel2:#171a22;
- --yellow:#f5ed00;
- --yellow2:#fff52b;
- --white:#fff;
- --muted:#9296a3;
- --border:rgba(255,255,255,.09);
- --glow:0 0 35px rgba(245,237,0,.16);
+:root{--bg:#07080b;--panel:#101219;--panel2:#191c25;--yellow:#f5ed00;--white:#fff;--muted:#9296a3;--border:rgba(255,255,255,.09);--glow:0 0 35px rgba(245,237,0,.16)}
+
+/* DÉSACTIVER LA SÉLECTION DES TEXTES */
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
 }
 
-*{margin:0;padding:0;box-sizing:border-box}
-
-html{
- scroll-behavior:smooth;
- scroll-padding-top:100px;
- width:100%;
- max-width:100%;
- scrollbar-width:none;
- -ms-overflow-style:none;
-}
-
-html::-webkit-scrollbar,
-body::-webkit-scrollbar{
- display:none;
- width:0;
- height:0;
-}
-
-body{
- width:100%;
- max-width:100%;
- margin:0;
- padding:0;
- background:var(--bg);
- color:var(--white);
- font-family:Inter,Arial,sans-serif;
- overflow-x:hidden;
-}
-
-body:before{
- content:"";
- position:fixed;
- inset:0;
- pointer-events:none;
- z-index:-1;
- opacity:.17;
- background-image:
- linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
- linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
- background-size:45px 45px;
-}
-
-a{text-decoration:none;color:inherit}
-button{font-family:inherit}
-::selection{background:var(--yellow);color:#08090c}
-
-/* Texte non sélectionnable (les champs de saisie restent utilisables) */
-html,body{
- -webkit-user-select:none;
- -moz-user-select:none;
- user-select:none;
- -webkit-touch-callout:none;
-}
-
+/* GARDER LA SÉLECTION DANS LES CHAMPS DE SAISIE */
 input,textarea,select{
- -webkit-user-select:text;
- -moz-user-select:text;
- user-select:text;
+    -webkit-user-select:text;
+    -moz-user-select:text;
+    -ms-user-select:text;
+    user-select:text;
 }
 
-img{
- -webkit-user-drag:none;
-}
+html{scroll-behavior:smooth;scroll-padding-top:105px;scrollbar-width:thin;scrollbar-color:#3a3c42 #08090c}
+body{min-width:320px;width:100%;margin:0;background:var(--bg);color:var(--white);font-family:Inter,Arial,sans-serif;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.13;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:45px 45px}
+a{color:inherit;text-decoration:none}button,input,select{font:inherit}button{cursor:pointer}img{max-width:100%;-webkit-user-drag:none}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:2px solid var(--yellow);outline-offset:4px}
+header,.hero,.ticker,section,footer{width:100%;max-width:100%}
 
-header,.hero,.ticker,section,footer{
- width:100%;
- max-width:100%;
- box-sizing:border-box;
-}
-
-/* =====================================
-   LOADER ESPORT PREMIUM - PROFIL BAS FC
-===================================== */
-
-#loader{
- position:fixed;
- inset:0;
- z-index:99999;
- display:flex;
- align-items:center;
- justify-content:center;
- overflow:hidden;
- background:#07080b;
- opacity:1;
- visibility:visible;
- transition:opacity .85s ease,visibility .85s ease;
-}
-
-#loader.hide{
- opacity:0;
- visibility:hidden;
- pointer-events:none;
-}
-
-.loader-bg{
- position:absolute;
- inset:0;
- background:
- radial-gradient(ellipse at center,rgba(245,237,0,.13),transparent 48%),
- linear-gradient(135deg,transparent 49.8%,rgba(245,237,0,.035) 50%,transparent 50.2%);
-}
-
-.loader-bg:before,
-.loader-bg:after{
- content:"";
- position:absolute;
- width:550px;
- height:550px;
- border:1px solid rgba(245,237,0,.09);
- transform:rotate(45deg);
- animation:loaderRotate 15s linear infinite;
-}
-
-.loader-bg:before{
- top:-300px;
- left:-300px;
-}
-
-.loader-bg:after{
- bottom:-300px;
- right:-300px;
- animation-direction:reverse;
-}
-
-.loader-content{
- position:relative;
- z-index:2;
- width:min(440px,85%);
- text-align:center;
- animation:loaderAppear 1s ease both;
-}
-
-.loader-top{
- display:flex;
- justify-content:space-between;
- color:#777b85;
- font-size:8px;
- font-weight:900;
- letter-spacing:2px;
- margin-bottom:45px;
-}
-
-.loader-emblem{
- display:flex;
- align-items:center;
- justify-content:center;
- gap:17px;
- margin-bottom:20px;
-}
-
-.emblem-line{
- height:2px;
- width:65px;
- background:linear-gradient(90deg,transparent,var(--yellow));
-}
-
-.emblem-line:last-child{
- background:linear-gradient(90deg,var(--yellow),transparent);
-}
-
-.emblem-text{
- font-family:"Barlow Condensed",sans-serif;
- font-size:85px;
- font-weight:900;
- font-style:italic;
- line-height:1;
- color:var(--yellow);
- text-shadow:0 0 20px rgba(245,237,0,.4);
- animation:emblemPulse 2s ease-in-out infinite;
-}
-
-.loader-content h1{
- font-family:"Barlow Condensed",sans-serif;
- font-size:clamp(39px,9vw,61px);
- font-weight:900;
- font-style:italic;
- letter-spacing:-1px;
- white-space:nowrap;
-}
-
-.loader-content h1 span{
- color:var(--yellow);
-}
-
-.loader-subtitle{
- display:flex;
- justify-content:center;
- align-items:center;
- gap:10px;
- margin-top:22px;
- color:#b5b7c0;
- font-size:9px;
- font-weight:900;
- letter-spacing:3px;
-}
-
-.loader-dot{
- width:7px;
- height:7px;
- border-radius:50%;
- background:var(--yellow);
- box-shadow:0 0 13px var(--yellow);
- animation:dotBlink 1s infinite;
-}
-
-.loader-progress{
- width:100%;
- height:4px;
- margin-top:35px;
- background:#242630;
- overflow:hidden;
-}
-
-.loader-progress-fill{
- width:0;
- height:100%;
- background:var(--yellow);
- box-shadow:0 0 15px var(--yellow);
- transition:width .15s linear;
-}
-
-.loader-bottom{
- display:flex;
- justify-content:space-between;
- margin-top:13px;
- color:#777b85;
- font-size:8px;
- font-weight:900;
- letter-spacing:1.5px;
-}
-
-.loader-bottom strong{
- color:var(--yellow);
- font-size:11px;
-}
-
-.loader-corner{
- position:absolute;
- right:30px;
- bottom:25px;
- color:#555963;
- font-size:9px;
- letter-spacing:2px;
- font-weight:900;
-}
-
-@keyframes loaderRotate{
- to{transform:rotate(405deg)}
-}
-
-@keyframes loaderAppear{
- from{opacity:0;transform:translateY(20px)}
- to{opacity:1;transform:translateY(0)}
-}
-
-@keyframes emblemPulse{
- 50%{text-shadow:0 0 35px rgba(245,237,0,.75)}
-}
-
-@keyframes dotBlink{
- 50%{opacity:.25}
-}
+/* LOADER */
+#loader{position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#07080b;opacity:1;visibility:visible;transition:opacity .65s ease,visibility .65s ease}
+#loader.hide{opacity:0;visibility:hidden;pointer-events:none}
+.loader-bg{position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(245,237,0,.13),transparent 48%),linear-gradient(135deg,transparent 49.8%,rgba(245,237,0,.035) 50%,transparent 50.2%)}
+.loader-bg:before,.loader-bg:after{content:"";position:absolute;width:550px;height:550px;border:1px solid rgba(245,237,0,.09);transform:rotate(45deg);animation:loaderRotate 15s linear infinite}
+.loader-bg:before{top:-300px;left:-300px}.loader-bg:after{bottom:-300px;right:-300px;animation-direction:reverse}
+.loader-content{position:relative;z-index:2;width:min(440px,85%);text-align:center;animation:loaderAppear .7s ease both}
+.loader-top,.loader-bottom{display:flex;justify-content:space-between;color:#777b85;font-size:8px;font-weight:900;letter-spacing:1.5px}
+.loader-top{margin-bottom:40px}
+.loader-emblem{display:flex;align-items:center;justify-content:center;gap:17px;margin-bottom:20px}
+.emblem-line{height:2px;width:65px;background:linear-gradient(90deg,transparent,var(--yellow))}
+.emblem-line:last-child{background:linear-gradient(90deg,var(--yellow),transparent)}
+.emblem-text{font-family:"Barlow Condensed",sans-serif;font-size:85px;font-weight:900;font-style:italic;line-height:1;color:var(--yellow);text-shadow:0 0 20px rgba(245,237,0,.4);animation:emblemPulse 2s ease-in-out infinite}
+.loader-content h1{font-family:"Barlow Condensed",sans-serif;font-size:clamp(38px,9vw,61px);font-weight:900;font-style:italic;white-space:nowrap}
+.loader-content h1 span,.hero h1 span,.section-heading h2 span,.recruitment h2 span{color:var(--yellow)}
+.loader-subtitle{display:flex;justify-content:center;align-items:center;gap:10px;margin-top:22px;color:#b5b7c0;font-size:9px;font-weight:900;letter-spacing:3px}
+.loader-dot{width:7px;height:7px;border-radius:50%;background:var(--yellow);box-shadow:0 0 13px var(--yellow);animation:dotBlink 1s infinite}
+.loader-progress{width:100%;height:4px;margin-top:35px;background:#242630;overflow:hidden}
+.loader-progress-fill{width:0;height:100%;background:var(--yellow);box-shadow:0 0 15px var(--yellow);transition:width .15s linear}
+.loader-bottom{margin-top:13px}.loader-bottom strong{color:var(--yellow);font-size:11px}
+.loader-corner{position:absolute;right:30px;bottom:25px;color:#555963;font-size:9px;letter-spacing:2px;font-weight:900}
+@keyframes loaderRotate{to{transform:rotate(405deg)}}@keyframes loaderAppear{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}@keyframes emblemPulse{50%{text-shadow:0 0 35px rgba(245,237,0,.75)}}@keyframes dotBlink{50%{opacity:.25}}
 
 /* HEADER */
-header{
- position:sticky;
- top:0;
- z-index:1000;
- min-height:82px;
- padding:0 5%;
- display:flex;
- align-items:center;
- justify-content:space-between;
- gap:22px;
- background:rgba(7,8,11,.94);
- border-bottom:1px solid rgba(245,237,0,.17);
- backdrop-filter:blur(18px);
-}
-
-.logo{
- font-family:"Barlow Condensed",sans-serif;
- font-size:33px;
- font-weight:900;
- font-style:italic;
- white-space:nowrap;
- letter-spacing:-1px;
-}
-
-.logo span{color:var(--yellow)}
-
-nav{
- display:flex;
- align-items:center;
- gap:21px;
-}
-
-nav a{
- position:relative;
- font-size:9px;
- font-weight:900;
- letter-spacing:1.2px;
- color:#b9bbc3;
- transition:.2s;
-}
-
-nav a:after{
- content:"";
- position:absolute;
- bottom:-8px;
- left:0;
- width:0;
- height:2px;
- background:var(--yellow);
- transition:.25s;
-}
-
-nav a:hover{color:var(--yellow)}
-nav a:hover:after{width:100%}
-
-.discord-auth{
- display:flex;
- align-items:center;
- gap:9px;
- flex-shrink:0;
-}
-
-.discord-login,.discord-logout{
- display:inline-flex;
- align-items:center;
- justify-content:center;
- padding:12px 14px;
- clip-path:polygon(8px 0,100% 0,100% calc(100% - 8px),calc(100% - 8px) 100%,0 100%,0 8px);
- font-size:9px;
- font-weight:900;
- letter-spacing:.7px;
- transition:.2s;
-}
-
-.discord-login{
- background:#5865f2;
- color:white;
-}
-
-.discord-login:hover{
- background:#4752c4;
- transform:translateY(-2px);
-}
-
-.discord-menu-wrap{
- position:relative;
-}
-
-.discord-account{
- display:flex;
- align-items:center;
- gap:9px;
- background:#171a22;
- border:1px solid var(--border);
- color:inherit;
- font-family:inherit;
- padding:6px 10px;
- cursor:pointer;
- transition:.2s;
-}
-
-.discord-account:hover,
-.discord-menu-wrap.open .discord-account{
- border-color:#5865f2;
- background:#1e2230;
-}
-
-.discord-chevron{
- font-size:11px;
- color:var(--muted);
- transition:transform .2s;
-}
-
-.discord-menu-wrap.open .discord-chevron{
- transform:rotate(180deg);
-}
-
-/* MENU DÉROULANT PROFIL */
-.discord-dropdown{
- position:absolute;
- top:calc(100% + 10px);
- right:0;
- min-width:230px;
- padding:8px;
- background:#12141b;
- border:1px solid rgba(245,237,0,.35);
- box-shadow:0 18px 50px rgba(0,0,0,.6),var(--glow);
- opacity:0;
- visibility:hidden;
- transform:translateY(-8px);
- transition:opacity .2s ease,transform .2s ease,visibility .2s ease;
- z-index:1100;
-}
-
-.discord-menu-wrap.open .discord-dropdown{
- opacity:1;
- visibility:visible;
- transform:translateY(0);
-}
-
-.dropdown-head{
- padding:10px 12px 12px;
- margin-bottom:6px;
- border-bottom:1px solid var(--border);
- font-size:9px;
- font-weight:900;
- letter-spacing:2px;
- color:var(--yellow);
-}
-
-.dropdown-item{
- display:flex;
- align-items:center;
- gap:12px;
- width:100%;
- padding:11px 12px;
- background:transparent;
- border:none;
- color:#d5d7de;
- font-family:inherit;
- font-size:11px;
- font-weight:700;
- text-align:left;
- cursor:pointer;
- transition:.15s;
-}
-
-.dropdown-item:hover{
- background:rgba(245,237,0,.08);
- color:var(--yellow);
-}
-
-.dropdown-icon{
- width:18px;
- text-align:center;
- font-size:14px;
-}
-
-.dropdown-divider{
- height:1px;
- margin:6px 0;
- background:var(--border);
-}
-
-.dropdown-item.danger:hover{
- background:rgba(255,70,70,.1);
- color:#ff6b6b;
-}
-
-/* PANNEAU PARAMÈTRES */
-#settings,
-#playerProfile{
- position:fixed;
- inset:0;
- z-index:100000;
- display:flex;
- align-items:center;
- justify-content:center;
- padding:20px;
- background:rgba(7,8,11,.88);
- backdrop-filter:blur(8px);
- opacity:0;
- visibility:hidden;
- transition:opacity .25s ease,visibility .25s ease;
-}
-
-#settings.open,
-#playerProfile.open{
- opacity:1;
- visibility:visible;
-}
-
-.settings-box{
- width:min(440px,100%);
- max-height:calc(100vh - 40px);
- overflow-y:auto;
- scrollbar-width:none;
- background:linear-gradient(145deg,#191c25,#101218);
- border:1px solid rgba(245,237,0,.4);
- box-shadow:var(--glow);
- transform:translateY(14px);
- transition:transform .25s ease;
-}
-
-#settings.open .settings-box,
-#playerProfile.open .settings-box{
- transform:translateY(0);
-}
-
-.settings-head{
- display:flex;
- align-items:center;
- justify-content:space-between;
- padding:20px 24px;
- border-bottom:1px solid var(--border);
-}
-
-.settings-head strong{
- font-family:"Barlow Condensed",sans-serif;
- font-size:28px;
- font-style:italic;
- color:var(--yellow);
-}
-
-.settings-close{
- background:none;
- border:none;
- color:var(--muted);
- font-size:20px;
- cursor:pointer;
- transition:.2s;
-}
-
-.settings-close:hover{color:var(--yellow)}
-
-.setting-row{
- display:flex;
- align-items:center;
- justify-content:space-between;
- gap:18px;
- padding:18px 24px;
- border-bottom:1px solid var(--border);
- cursor:pointer;
-}
-
-.setting-row:last-of-type{border-bottom:none}
-
-.setting-row b{
- display:block;
- font-size:12px;
- margin-bottom:4px;
-}
-
-.setting-row small{
- font-size:10px;
- line-height:1.6;
- color:var(--muted);
-}
-
-.setting-row input{
- position:absolute;
- opacity:0;
- pointer-events:none;
-}
-
-.switch{
- position:relative;
- flex-shrink:0;
- width:44px;
- height:24px;
- background:#2a2d38;
- border-radius:24px;
- transition:.2s;
-}
-
-.switch:after{
- content:"";
- position:absolute;
- top:3px;
- left:3px;
- width:18px;
- height:18px;
- border-radius:50%;
- background:#fff;
- transition:.2s;
-}
-
-.setting-row input:checked + .switch{
- background:var(--yellow);
-}
-
-.setting-row input:checked + .switch:after{
- transform:translateX(20px);
- background:#08090c;
-}
-
-.setting-row input:focus-visible + .switch{
- outline:2px solid var(--yellow);
- outline-offset:2px;
-}
-
-.settings-note{
- padding:14px 24px 20px;
- font-size:9px;
- letter-spacing:1px;
- color:#666a76;
-}
-
-/* PROFIL JOUEUR */
-.player-form{
- padding:20px 24px 6px;
- display:flex;
- flex-direction:column;
- gap:14px;
-}
-
-.player-form label{
- display:flex;
- flex-direction:column;
- gap:7px;
- font-size:9px;
- font-weight:900;
- letter-spacing:1.5px;
- color:var(--muted);
-}
-
-.player-form input,
-.player-form select{
- padding:12px 13px;
- background:#0b0c11;
- border:1px solid var(--border);
- color:#fff;
- font-family:inherit;
- font-size:12px;
- outline:none;
- transition:.2s;
-}
-
-.player-form input:focus,
-.player-form select:focus{
- border-color:var(--yellow);
-}
-
-.player-form select option{
- background:#0b0c11;
- color:#fff;
-}
-
-.player-actions{
- display:flex;
- flex-wrap:wrap;
- gap:10px;
- margin-top:4px;
-}
-
-.player-actions button{
- flex:1;
- min-width:140px;
- padding:13px 14px;
- font-family:inherit;
- font-size:10px;
- font-weight:900;
- letter-spacing:1px;
- cursor:pointer;
- transition:.2s;
-}
-
-.btn-save{
- background:var(--yellow);
- border:1px solid var(--yellow);
- color:#08090c;
-}
-
-.btn-save:hover{
- background:#fff;
- border-color:#fff;
-}
-
-.btn-copy{
- background:transparent;
- border:1px solid rgba(245,237,0,.6);
- color:var(--yellow);
-}
-
-.btn-copy:hover{
- background:var(--yellow);
- color:#08090c;
-}
-
-.player-status{
- min-height:16px;
- font-size:10px;
- color:var(--yellow);
-}
-
-/* OPTION : RÉDUIRE LES ANIMATIONS */
-html.reduce-motion{scroll-behavior:auto}
-
-html.reduce-motion *,
-html.reduce-motion *:before,
-html.reduce-motion *:after{
- animation-duration:.01ms!important;
- animation-iteration-count:1!important;
- transition-duration:.01ms!important;
-}
-
-.discord-avatar{
- width:34px;
- height:34px;
- border-radius:50%;
- object-fit:cover;
- border:2px solid #5865f2;
-}
-
-.discord-avatar{
- flex-shrink:0;
-}
-
-.discord-avatar-unused{
- display:none;
-}
-
-/* AGRANDISSEMENT IMAGE (LIGHTBOX) */
-#lightbox{
- position:fixed;
- inset:0;
- z-index:100000;
- display:flex;
- align-items:center;
- justify-content:center;
- padding:24px;
- background:rgba(7,8,11,.92);
- backdrop-filter:blur(8px);
- opacity:0;
- visibility:hidden;
- cursor:zoom-out;
- transition:opacity .25s ease,visibility .25s ease;
-}
-
-#lightbox.open{
- opacity:1;
- visibility:visible;
-}
-
-#lightbox img{
- max-width:min(90vw,520px);
- max-height:80vh;
- border-radius:50%;
- border:3px solid #5865f2;
- box-shadow:0 0 60px rgba(88,101,242,.35);
- object-fit:cover;
- transform:scale(.9);
- transition:transform .25s ease;
-}
-
-#lightbox.open img{
- transform:scale(1);
-}
-
-.lightbox-close{
- position:absolute;
- top:22px;
- right:26px;
- color:var(--yellow);
- font-size:30px;
- font-weight:900;
- line-height:1;
- cursor:pointer;
- background:none;
- border:none;
-}
-
-.discord-username{
- font-size:11px;
- font-weight:800;
- max-width:110px;
- overflow:hidden;
- text-overflow:ellipsis;
- white-space:nowrap;
-}
-
-.discord-logout{
- border:1px solid rgba(245,237,0,.6);
- color:var(--yellow);
- background:transparent;
-}
-
-.discord-logout:hover{
- background:var(--yellow);
- color:#08090c;
-}
+header{position:sticky;top:0;z-index:1000;min-height:82px;padding:0 5%;display:flex;align-items:center;justify-content:space-between;gap:22px;background:rgba(7,8,11,.94);border-bottom:1px solid rgba(245,237,0,.17);backdrop-filter:blur(18px)}
+.logo,.footer-logo{font-family:"Barlow Condensed",sans-serif;font-size:33px;font-weight:900;font-style:italic;white-space:nowrap;letter-spacing:-1px}
+.logo span,.footer-logo span{color:var(--yellow)}
+nav{display:flex;align-items:center;gap:21px}
+nav a{position:relative;color:#b9bbc3;font-size:9px;font-weight:900;letter-spacing:1.2px;transition:color .2s}
+nav a:after{content:"";position:absolute;bottom:-8px;left:0;width:0;height:2px;background:var(--yellow);transition:width .25s}
+nav a:hover,nav a.active{color:var(--yellow)}nav a:hover:after,nav a.active:after{width:100%}
+.discord-auth{display:flex;align-items:center;gap:9px;flex-shrink:0}
+.discord-login,.discord-logout{display:inline-flex;align-items:center;justify-content:center;padding:12px 14px;clip-path:polygon(8px 0,100% 0,100% calc(100% - 8px),calc(100% - 8px) 100%,0 100%,0 8px);font-size:9px;font-weight:900;letter-spacing:.7px;transition:.2s}
+.discord-login{background:#5865f2;color:white}.discord-login:hover{background:#4752c4;transform:translateY(-2px)}
+.discord-menu-wrap{position:relative}.discord-account{display:flex;align-items:center;gap:9px;padding:6px 10px;background:#171a22;border:1px solid var(--border);color:inherit;cursor:pointer;transition:.2s}
+.discord-account:hover,.discord-menu-wrap.open .discord-account{border-color:#5865f2;background:#1e2230}
+.discord-chevron{font-size:11px;color:var(--muted);transition:transform .2s}.discord-menu-wrap.open .discord-chevron{transform:rotate(180deg)}
+.discord-dropdown{position:absolute;top:calc(100% + 10px);right:0;min-width:230px;padding:8px;background:#12141b;border:1px solid rgba(245,237,0,.35);box-shadow:0 18px 50px rgba(0,0,0,.6),var(--glow);opacity:0;visibility:hidden;transform:translateY(-8px);transition:opacity .2s,transform .2s,visibility .2s;z-index:1100}
+.discord-menu-wrap.open .discord-dropdown{opacity:1;visibility:visible;transform:translateY(0)}
+.dropdown-head{padding:10px 12px 12px;margin-bottom:6px;border-bottom:1px solid var(--border);font-size:9px;font-weight:900;letter-spacing:2px;color:var(--yellow)}
+.dropdown-item{display:flex;align-items:center;gap:12px;width:100%;padding:11px 12px;background:transparent;border:0;color:#d5d7de;font-size:11px;font-weight:700;text-align:left;transition:.15s}
+.dropdown-item:hover{background:rgba(245,237,0,.08);color:var(--yellow)}.dropdown-icon{width:18px;text-align:center;font-size:14px}.dropdown-divider{height:1px;margin:6px 0;background:var(--border)}
+.dropdown-item.danger:hover{background:rgba(255,70,70,.1);color:#ff6b6b}
+.discord-avatar{width:34px;height:34px;border-radius:50%;object-fit:cover;border:2px solid #5865f2;flex-shrink:0}
+.discord-username{font-size:11px;font-weight:800;max-width:110px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.discord-logout{border:1px solid rgba(245,237,0,.6);color:var(--yellow);background:transparent}.discord-logout:hover{background:var(--yellow);color:#08090c}
+
+/* DIALOGUES */
+#settings,#playerProfile,#lightbox{position:fixed;inset:0;z-index:100000;display:flex;align-items:center;justify-content:center;padding:20px;background:rgba(7,8,11,.9);backdrop-filter:blur(8px);opacity:0;visibility:hidden;transition:opacity .25s,visibility .25s}
+#settings.open,#playerProfile.open,#lightbox.open{opacity:1;visibility:visible}
+.settings-box{width:min(440px,100%);max-height:calc(100vh - 40px);overflow-y:auto;background:linear-gradient(145deg,#191c25,#101218);border:1px solid rgba(245,237,0,.4);box-shadow:var(--glow);transform:translateY(14px);transition:transform .25s}
+#settings.open .settings-box,#playerProfile.open .settings-box{transform:translateY(0)}
+.settings-head{display:flex;align-items:center;justify-content:space-between;padding:20px 24px;border-bottom:1px solid var(--border)}
+.settings-head strong{font-family:"Barlow Condensed",sans-serif;font-size:28px;font-style:italic;color:var(--yellow)}
+.settings-close{background:none;border:0;color:var(--muted);font-size:20px;transition:.2s}.settings-close:hover{color:var(--yellow)}
+.setting-row{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:18px 24px;border-bottom:1px solid var(--border);cursor:pointer}
+.setting-row b{display:block;font-size:12px;margin-bottom:4px}.setting-row small{font-size:10px;line-height:1.6;color:var(--muted)}
+.setting-row input{position:absolute;opacity:0;pointer-events:none}.switch{position:relative;flex-shrink:0;width:44px;height:24px;background:#2a2d38;border-radius:24px;transition:.2s}
+.switch:after{content:"";position:absolute;top:3px;left:3px;width:18px;height:18px;border-radius:50%;background:white;transition:.2s}
+.setting-row input:checked+.switch{background:var(--yellow)}.setting-row input:checked+.switch:after{transform:translateX(20px);background:#08090c}
+.setting-row input:focus-visible+.switch{outline:2px solid var(--yellow);outline-offset:2px}
+.settings-note{padding:14px 24px 20px;font-size:9px;letter-spacing:1px;color:#777b85}
+.player-form{padding:20px 24px 6px;display:flex;flex-direction:column;gap:14px}
+.player-form label{display:flex;flex-direction:column;gap:7px;font-size:9px;font-weight:900;letter-spacing:1.5px;color:var(--muted)}
+.player-form input,.player-form select{width:100%;padding:12px 13px;background:#0b0c11;border:1px solid var(--border);color:white;font-size:12px;outline:none;transition:.2s}
+.player-form input:focus,.player-form select:focus{border-color:var(--yellow)}.player-form select option{background:#0b0c11;color:white}
+.player-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:4px}.player-actions button{flex:1;min-width:140px;padding:13px 14px;font-size:10px;font-weight:900;letter-spacing:1px;transition:.2s}
+.btn-save{background:var(--yellow);border:1px solid var(--yellow);color:#08090c}.btn-save:hover{background:white;border-color:white}
+.btn-copy{background:transparent;border:1px solid rgba(245,237,0,.6);color:var(--yellow)}.btn-copy:hover{background:var(--yellow);color:#08090c}
+.player-status{min-height:16px;font-size:10px;color:var(--yellow)}
+#lightbox{cursor:zoom-out}#lightbox img{max-width:min(90vw,520px);max-height:80vh;border-radius:50%;border:3px solid #5865f2;box-shadow:0 0 60px rgba(88,101,242,.35);object-fit:cover;transform:scale(.9);transition:transform .25s}
+#lightbox.open img{transform:scale(1)}.lightbox-close{position:absolute;top:22px;right:26px;color:var(--yellow);font-size:30px;font-weight:900;line-height:1;background:none;border:0;cursor:pointer}
 
 /* HERO */
-.hero{
- min-height:710px;
- position:relative;
- display:flex;
- align-items:center;
- padding:95px 9%;
- overflow:hidden;
- isolation:isolate;
- background:
- linear-gradient(90deg,#07080b 3%,rgba(7,8,11,.94) 35%,rgba(7,8,11,.35) 100%),
- linear-gradient(0deg,#07080b 0%,transparent 38%),
- url('https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=1800') center/cover;
-}
+.hero{min-height:710px;position:relative;display:flex;align-items:center;padding:95px 9%;overflow:hidden;isolation:isolate;background:linear-gradient(90deg,#07080b 3%,rgba(7,8,11,.94) 35%,rgba(7,8,11,.35) 100%),linear-gradient(0deg,#07080b 0%,transparent 38%),url('https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=1800') center/cover}
+.hero:before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(ellipse at 75% 45%,rgba(245,237,0,.12),transparent 38%),linear-gradient(120deg,transparent 50%,rgba(245,237,0,.06) 50.2%,transparent 50.8%)}
+.hero:after{content:"PBF";position:absolute;right:-30px;bottom:-100px;font-family:"Barlow Condensed",sans-serif;font-size:clamp(250px,38vw,550px);font-weight:900;font-style:italic;line-height:1;color:rgba(255,255,255,.025);z-index:-1;pointer-events:none}
+.hero-content{position:relative;z-index:2;max-width:760px;animation:appear .8s ease both}
+.tag{display:inline-flex;align-items:center;gap:11px;color:var(--yellow);font-size:10px;letter-spacing:4px;font-weight:900}.tag:before{content:"";width:30px;height:3px;background:var(--yellow)}
+.hero h1{font-family:"Barlow Condensed",sans-serif;font-size:clamp(90px,14vw,175px);font-weight:900;font-style:italic;line-height:.76;letter-spacing:-5px;margin:38px 0 30px;text-transform:uppercase;text-shadow:5px 7px 0 rgba(0,0,0,.35)}
+.hero-description{max-width:470px;color:#c1c3ca;font-size:13px;line-height:1.9;margin-bottom:32px;border-left:3px solid var(--yellow);padding-left:17px}
+.hero-buttons{display:flex;flex-wrap:wrap;gap:13px}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:17px 25px;background:var(--yellow);color:#08090c;font-size:10px;font-weight:900;letter-spacing:1.3px;border:1px solid var(--yellow);clip-path:polygon(0 0,calc(100% - 13px) 0,100% 13px,100% 100%,13px 100%,0 calc(100% - 13px));transition:.25s}
+.btn:hover{background:white;border-color:white;transform:translateY(-4px);box-shadow:0 8px 30px rgba(245,237,0,.2)}
+.btn-outline{background:transparent;color:white;border-color:rgba(255,255,255,.35)}.btn-outline:hover{background:var(--yellow);color:#08090c;border-color:var(--yellow)}
+.hero-bottom{position:absolute;bottom:32px;left:9%;color:#777;font-size:9px;letter-spacing:3px;font-weight:900}
+.hero-side{position:absolute;right:8%;top:50%;transform:translateY(-50%);width:220px;padding:24px;border:1px solid rgba(245,237,0,.4);background:rgba(8,9,12,.68);backdrop-filter:blur(10px);box-shadow:var(--glow)}
+.hero-side small{color:var(--yellow);font-size:9px;font-weight:900;letter-spacing:2px}.hero-side strong{display:block;font-family:"Barlow Condensed",sans-serif;font-size:56px;line-height:1.1;margin:12px 0}
+.hero-side p{font-size:10px;color:#aaa;line-height:1.7}.side-line{height:3px;background:var(--yellow);margin-top:18px}
 
-.hero:before{
- content:"";
- position:absolute;
- inset:0;
- z-index:-1;
- background:
- radial-gradient(ellipse at 75% 45%,rgba(245,237,0,.12),transparent 38%),
- linear-gradient(120deg,transparent 50%,rgba(245,237,0,.06) 50.2%,transparent 50.8%);
-}
-
-.hero:after{
- content:"PBF";
- position:absolute;
- right:-30px;
- bottom:-100px;
- font-family:"Barlow Condensed",sans-serif;
- font-size:clamp(250px,38vw,550px);
- font-weight:900;
- font-style:italic;
- line-height:1;
- color:rgba(255,255,255,.025);
- z-index:-1;
- pointer-events:none;
-}
-
-.hero-content{
- position:relative;
- z-index:2;
- max-width:760px;
-}
-
-.tag{
- display:inline-flex;
- align-items:center;
- gap:11px;
- color:var(--yellow);
- font-size:10px;
- letter-spacing:4px;
- font-weight:900;
-}
-
-.tag:before{
- content:"";
- width:30px;
- height:3px;
- background:var(--yellow);
-}
-
-.hero h1{
- font-family:"Barlow Condensed",sans-serif;
- font-size:clamp(90px,14vw,175px);
- font-weight:900;
- font-style:italic;
- line-height:.76;
- letter-spacing:-5px;
- margin:38px 0 30px;
- text-transform:uppercase;
- text-shadow:5px 7px 0 rgba(0,0,0,.35);
-}
-
-.hero h1 span{
- color:var(--yellow);
- text-shadow:0 0 45px rgba(245,237,0,.2);
-}
-
-.hero-description{
- max-width:470px;
- color:#c1c3ca;
- font-size:13px;
- line-height:1.9;
- margin-bottom:32px;
- border-left:3px solid var(--yellow);
- padding-left:17px;
-}
-
-.hero-buttons{
- display:flex;
- flex-wrap:wrap;
- gap:13px;
-}
-
-.btn{
- display:inline-flex;
- align-items:center;
- justify-content:center;
- padding:17px 25px;
- background:var(--yellow);
- color:#08090c;
- font-size:10px;
- font-weight:1000;
- letter-spacing:1.3px;
- border:1px solid var(--yellow);
- clip-path:polygon(0 0,calc(100% - 13px) 0,100% 13px,100% 100%,13px 100%,0 calc(100% - 13px));
- transition:.25s;
-}
-
-.btn:hover{
- background:white;
- border-color:white;
- transform:translateY(-4px);
- box-shadow:0 8px 30px rgba(245,237,0,.2);
-}
-
-.btn-outline{
- background:transparent;
- color:white;
- border-color:rgba(255,255,255,.35);
-}
-
-.btn-outline:hover{
- background:var(--yellow);
- color:#08090c;
- border-color:var(--yellow);
-}
-
-.hero-bottom{
- position:absolute;
- bottom:32px;
- left:9%;
- color:#777;
- font-size:9px;
- letter-spacing:3px;
- font-weight:900;
-}
-
-.hero-side{
- position:absolute;
- right:8%;
- top:50%;
- transform:translateY(-50%);
- width:220px;
- padding:24px;
- border:1px solid rgba(245,237,0,.4);
- background:rgba(8,9,12,.68);
- backdrop-filter:blur(10px);
- box-shadow:var(--glow);
-}
-
-.hero-side small{
- color:var(--yellow);
- font-size:9px;
- font-weight:900;
- letter-spacing:2px;
-}
-
-.hero-side strong{
- display:block;
- font-family:"Barlow Condensed",sans-serif;
- font-size:56px;
- font-weight:900;
- line-height:1.1;
- margin:12px 0;
-}
-
-.hero-side p{
- font-size:10px;
- color:#aaa;
- line-height:1.7;
-}
-
-.side-line{
- height:3px;
- background:var(--yellow);
- margin-top:18px;
-}
-
-/* BANDEAU */
-.ticker{
- background:var(--yellow);
- color:#08090c;
- padding:14px 5%;
- display:flex;
- justify-content:center;
- gap:35px;
- flex-wrap:wrap;
- font-family:"Barlow Condensed",sans-serif;
- font-size:17px;
- font-weight:900;
- letter-spacing:2px;
- transform:skewY(-1deg);
- margin:0;
-}
-
+/* TICKER + SECTIONS */
+.ticker{background:var(--yellow);color:#08090c;padding:14px 5%;display:flex;justify-content:center;gap:35px;flex-wrap:wrap;font-family:"Barlow Condensed",sans-serif;font-size:17px;font-weight:900;letter-spacing:2px}
 .ticker span{opacity:.5}
-
-/* SECTIONS */
-section{
- padding:105px 9%;
- position:relative;
-}
-
-.section-heading{
- text-align:center;
- margin-bottom:58px;
-}
-
-.section-heading h2{
- font-family:"Barlow Condensed",sans-serif;
- font-size:clamp(42px,5vw,66px);
- font-weight:900;
- text-transform:uppercase;
- margin:14px 0;
- font-style:italic;
- letter-spacing:-1px;
-}
-
-.section-heading h2 span{color:var(--yellow)}
-
-.section-heading p{
- font-size:12px;
- color:var(--muted);
- line-height:1.8;
-}
-
-.section-kicker{
- color:var(--yellow);
- font-size:10px;
- letter-spacing:4px;
- font-weight:900;
-}
-
-.section-kicker:before,.section-kicker:after{
- content:" / ";
- color:#626570;
-}
+section{padding:105px 9%;position:relative}
+.section-heading{text-align:center;margin-bottom:58px}.section-heading h2{font-family:"Barlow Condensed",sans-serif;font-size:clamp(42px,5vw,66px);font-weight:900;text-transform:uppercase;margin:14px 0;font-style:italic;letter-spacing:-1px}
+.section-heading p{font-size:12px;color:var(--muted);line-height:1.8}.section-kicker{color:var(--yellow);font-size:10px;letter-spacing:4px;font-weight:900}
+.section-kicker:before,.section-kicker:after{content:" / ";color:#626570}
 
 /* CLUB */
-.club-section{
- background:
- radial-gradient(ellipse at 50% 0,rgba(245,237,0,.06),transparent 55%),
- linear-gradient(135deg,#101219,#090a0e);
- text-align:center;
- border-bottom:1px solid var(--border);
-}
+.club-section{background:radial-gradient(ellipse at 50% 0,rgba(245,237,0,.06),transparent 55%),linear-gradient(135deg,#101219,#090a0e);text-align:center;border-bottom:1px solid var(--border)}
+.club-text{max-width:750px;margin:auto;color:#aeb1bb;font-size:13px;line-height:2}
+.club-values{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;max-width:1000px;margin:50px auto 0}
+.value-card{position:relative;overflow:hidden;padding:32px 20px;background:linear-gradient(145deg,#191c25,#101218);border:1px solid var(--border);transition:.25s}
+.value-card:after{content:"";position:absolute;right:-35px;top:-35px;width:85px;height:85px;border:1px solid rgba(245,237,0,.25);transform:rotate(45deg)}
+.value-card:hover{border-color:var(--yellow);transform:translateY(-7px);box-shadow:var(--glow)}
+.value-icon{font-size:29px;margin-bottom:17px}.value-card h3{font-family:"Barlow Condensed",sans-serif;font-size:27px;color:var(--yellow);margin-bottom:8px;font-style:italic}.value-card p{font-size:11px;color:var(--muted)}
 
-.club-text{
- max-width:750px;
- margin:auto;
- color:#aeb1bb;
- font-size:13px;
- line-height:2;
-}
-
-.club-values{
- display:grid;
- grid-template-columns:repeat(3,1fr);
- gap:18px;
- max-width:1000px;
- margin:50px auto 0;
-}
-
-.value-card{
- position:relative;
- overflow:hidden;
- padding:32px 20px;
- background:linear-gradient(145deg,#191c25,#101218);
- border:1px solid var(--border);
- transition:.25s;
-}
-
-.value-card:after{
- content:"";
- position:absolute;
- right:-35px;
- top:-35px;
- width:85px;
- height:85px;
- border:1px solid rgba(245,237,0,.25);
- transform:rotate(45deg);
-}
-
-.value-card:hover{
- border-color:var(--yellow);
- transform:translateY(-7px);
- box-shadow:var(--glow);
-}
-
-.value-icon{
- font-size:29px;
- margin-bottom:17px;
-}
-
-.value-card h3{
- font-family:"Barlow Condensed",sans-serif;
- font-size:27px;
- color:var(--yellow);
- margin-bottom:8px;
- font-style:italic;
-}
-
-.value-card p{
- font-size:11px;
- color:var(--muted);
-}
-
-/* STATISTIQUES */
-.stats-section{
- background:#0b0c11;
- background-image:linear-gradient(rgba(255,255,255,.015) 1px,transparent 1px);
- background-size:100% 35px;
-}
-
-.club-label{
- display:inline-block;
- padding:11px 19px;
- border:1px solid rgba(245,237,0,.5);
- color:var(--yellow);
- font-size:10px;
- letter-spacing:2px;
- margin-top:18px;
- font-weight:900;
- background:rgba(245,237,0,.035);
-}
-
-.stats-grid{
- display:grid;
- grid-template-columns:repeat(4,1fr);
- gap:15px;
- max-width:1150px;
- margin:auto;
-}
-
-.stat-card{
- position:relative;
- overflow:hidden;
- background:linear-gradient(145deg,#191c25,#101218);
- border:1px solid var(--border);
- padding:27px 20px;
- transition:.25s;
-}
-
-.stat-card:before{
- content:"";
- position:absolute;
- left:0;
- top:0;
- width:4px;
- height:100%;
- background:var(--yellow);
- transform:scaleY(0);
- transform-origin:bottom;
- transition:.25s;
-}
-
-.stat-card:after{
- content:"";
- position:absolute;
- right:-35px;
- bottom:-50px;
- width:100px;
- height:100px;
- background:rgba(245,237,0,.045);
- transform:rotate(45deg);
-}
-
-.stat-card:hover{
- border-color:rgba(245,237,0,.6);
- transform:translateY(-6px);
- box-shadow:var(--glow);
-}
-
-.stat-card:hover:before{transform:scaleY(1)}
-
-.stat-icon{
- font-size:22px;
- margin-bottom:18px;
-}
-
-.stat-number{
- color:var(--yellow);
- font-family:"Barlow Condensed",sans-serif;
- font-size:55px;
- font-weight:900;
- line-height:1;
-}
-
-.stat-name{
- font-size:9px;
- letter-spacing:2px;
- color:#9296a3;
- margin-top:10px;
- font-weight:900;
-}
-
-.division-box{
- max-width:430px;
- margin:45px auto 0;
- padding:28px;
- border:1px solid rgba(245,237,0,.4);
- background:linear-gradient(135deg,#1a1b1e,#101116);
- text-align:center;
- position:relative;
- overflow:hidden;
-}
-
-.division-box:before{
- content:"";
- position:absolute;
- inset:0;
- background:linear-gradient(110deg,transparent,rgba(245,237,0,.07),transparent);
-}
-
-.division-box small{
- color:var(--muted);
- letter-spacing:3px;
- font-size:9px;
- font-weight:900;
-}
-
-.division-box strong{
- display:block;
- font-family:"Barlow Condensed",sans-serif;
- color:var(--yellow);
- font-size:65px;
- margin-top:5px;
- font-style:italic;
-}
-
-.refresh-btn{
- margin-top:30px;
- padding:14px 22px;
- border:1px solid var(--yellow);
- background:transparent;
- color:var(--yellow);
- font-size:10px;
- font-weight:900;
- letter-spacing:1px;
- cursor:pointer;
- transition:.2s;
-}
-
-.refresh-btn:hover{
- background:var(--yellow);
- color:#08090c;
- box-shadow:var(--glow);
-}
-
-#stats-status{
- margin-top:15px;
- color:var(--muted);
- font-size:11px;
-}
+/* STATS */
+.stats-section{background:#0b0c11;background-image:linear-gradient(rgba(255,255,255,.015) 1px,transparent 1px);background-size:100% 35px}
+.club-label{display:inline-block;padding:11px 19px;border:1px solid rgba(245,237,0,.5);color:var(--yellow);font-size:10px;letter-spacing:2px;margin-top:18px;font-weight:900;background:rgba(245,237,0,.035)}
+.stats-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:15px;max-width:1150px;margin:auto}
+.stat-card{position:relative;overflow:hidden;background:linear-gradient(145deg,#191c25,#101218);border:1px solid var(--border);padding:27px 20px;transition:.25s}
+.stat-card:before{content:"";position:absolute;left:0;top:0;width:4px;height:100%;background:var(--yellow);transform:scaleY(0);transform-origin:bottom;transition:.25s}
+.stat-card:after{content:"";position:absolute;right:-35px;bottom:-50px;width:100px;height:100px;background:rgba(245,237,0,.045);transform:rotate(45deg)}
+.stat-card:hover{border-color:rgba(245,237,0,.6);transform:translateY(-6px);box-shadow:var(--glow)}.stat-card:hover:before{transform:scaleY(1)}
+.stat-icon{font-size:22px;margin-bottom:18px}.stat-number{color:var(--yellow);font-family:"Barlow Condensed",sans-serif;font-size:55px;font-weight:900;line-height:1}
+.stat-name{font-size:9px;letter-spacing:2px;color:#9296a3;margin-top:10px;font-weight:900}
+.division-box{max-width:430px;margin:45px auto 0;padding:28px;border:1px solid rgba(245,237,0,.4);background:linear-gradient(135deg,#1a1b1e,#101116);text-align:center;position:relative;overflow:hidden}
+.division-box:before{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent,rgba(245,237,0,.07),transparent)}
+.division-box small{color:var(--muted);letter-spacing:3px;font-size:9px;font-weight:900}.division-box strong{display:block;font-family:"Barlow Condensed",sans-serif;color:var(--yellow);font-size:65px;margin-top:5px;font-style:italic}
+.refresh-btn{margin-top:30px;padding:14px 22px;border:1px solid var(--yellow);background:transparent;color:var(--yellow);font-size:10px;font-weight:900;letter-spacing:1px;transition:.2s}
+.refresh-btn:hover:not(:disabled){background:var(--yellow);color:#08090c;box-shadow:var(--glow)}.refresh-btn:disabled{opacity:.55;cursor:wait}
+#stats-status{margin-top:15px;color:var(--muted);font-size:11px}
 
 /* POSTES */
-.roster-section{
- background:
- radial-gradient(ellipse at 50% 100%,rgba(245,237,0,.055),transparent 55%),
- #11141b;
-}
-
-.cards{
- display:grid;
- grid-template-columns:repeat(3,1fr);
- gap:18px;
- max-width:1100px;
- margin:auto;
-}
-
-.card{
- position:relative;
- overflow:hidden;
- padding:42px 25px;
- background:#191c24;
- border:1px solid var(--border);
- transition:.25s;
- text-align:center;
-}
-
-.card:before{
- content:"";
- position:absolute;
- top:0;
- left:0;
- width:100%;
- height:4px;
- background:var(--yellow);
- transform:scaleX(0);
- transition:.25s;
-}
-
-.card:hover:before{transform:scaleX(1)}
-
-.card:hover{
- border-color:var(--yellow);
- transform:translateY(-7px);
- box-shadow:var(--glow);
-}
-
-.card-icon{
- font-size:38px;
- margin-bottom:20px;
-}
-
-.card h3{
- font-family:"Barlow Condensed",sans-serif;
- font-size:34px;
- color:var(--yellow);
- margin-bottom:12px;
- font-style:italic;
-}
-
-.card p{
- font-size:12px;
- color:var(--muted);
- letter-spacing:2px;
-}
-
-/* RECRUTEMENT */
-.recruitment{
- text-align:center;
- overflow:hidden;
- background:
- radial-gradient(ellipse at 50% 50%,rgba(245,237,0,.12),transparent 55%),
- linear-gradient(rgba(8,9,12,.9),rgba(8,9,12,.96)),
- url('https://images.unsplash.com/photo-1518604666860-9ed391f76460?w=1600') center/cover;
-}
-
-.recruitment:before{
- content:"PBF";
- position:absolute;
- left:50%;
- top:50%;
- transform:translate(-50%,-50%);
- font-family:"Barlow Condensed",sans-serif;
- font-size:clamp(180px,35vw,450px);
- font-weight:900;
- font-style:italic;
- color:rgba(255,255,255,.025);
- pointer-events:none;
-}
-
-.recruitment>*{
- position:relative;
- z-index:1;
-}
-
-.recruitment h2{
- font-family:"Barlow Condensed",sans-serif;
- font-size:clamp(50px,8vw,90px);
- font-weight:900;
- margin:20px 0;
- font-style:italic;
-}
-
-.recruitment h2 span{color:var(--yellow)}
-
-.recruitment p{
- font-size:13px;
- color:#aeb1bb;
- margin-bottom:32px;
- line-height:1.9;
-}
-
-/* FOOTER */
-footer{
- padding:38px 8%;
- background:#07080b;
- border-top:1px solid rgba(245,237,0,.2);
- display:flex;
- justify-content:space-between;
- align-items:center;
- gap:20px;
- flex-wrap:wrap;
-}
-
-.footer-logo{
- font-family:"Barlow Condensed",sans-serif;
- font-size:29px;
- font-weight:900;
- font-style:italic;
-}
-
-.footer-logo span{color:var(--yellow)}
-
-.footer-copy{
- font-size:10px;
- color:#777;
- letter-spacing:1px;
-}
-
-/* BARRE DE PROGRESSION + MENU ACTIF */
-.scroll-progress{
- position:fixed;
- top:0;
- left:0;
- width:0;
- height:3px;
- background:var(--yellow);
- box-shadow:0 0 12px var(--yellow);
- z-index:1200;
- transition:width .1s linear;
- pointer-events:none;
-}
-
-nav a.active{color:var(--yellow)}
-nav a.active:after{width:100%}
-
-/* APPARITION AU DÉFILEMENT */
-.js .reveal{
- opacity:0;
- transform:translateY(34px);
- transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1);
-}
-
-.js .reveal.visible{
- opacity:1;
- transform:none;
-}
+.roster-section{background:radial-gradient(ellipse at 50% 100%,rgba(245,237,0,.055),transparent 55%),#11141b}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;max-width:1100px;margin:auto}
+.card{position:relative;overflow:hidden;padding:42px 25px;background:#191c24;border:1px solid var(--border);transition:.25s;text-align:center}
+.card:before{content:"";position:absolute;top:0;left:0;width:100%;height:4px;background:var(--yellow);transform:scaleX(0);transition:.25s}
+.card:hover:before{transform:scaleX(1)}.card:hover{border-color:var(--yellow);transform:translateY(-7px);box-shadow:var(--glow)}
+.card-icon{font-size:38px;margin-bottom:20px}.card h3{font-family:"Barlow Condensed",sans-serif;font-size:34px;color:var(--yellow);margin-bottom:12px;font-style:italic}
+.card p{font-size:12px;color:var(--muted);letter-spacing:2px}
 
 /* EFFECTIF */
-.squad-section{
- background:
- radial-gradient(ellipse at 50% 0,rgba(245,237,0,.07),transparent 55%),
- #0b0c11;
-}
-
-.squad-grid{
- display:grid;
- grid-template-columns:repeat(auto-fill,minmax(210px,1fr));
- gap:18px;
- max-width:1150px;
- margin:auto;
-}
-
-.player-card{
- position:relative;
- overflow:hidden;
- display:flex;
- flex-direction:column;
- align-items:center;
- padding:62px 20px 28px;
- text-align:center;
- background:linear-gradient(160deg,#1c1f2a,#0f1117);
- border:1px solid var(--border);
- transition:.25s;
-}
-
-.player-card:before{
- content:"";
- position:absolute;
- right:-45px;
- top:-45px;
- width:110px;
- height:110px;
- background:rgba(245,237,0,.06);
- transform:rotate(45deg);
-}
-
-.player-card:after{
- content:"";
- position:absolute;
- left:0;
- bottom:0;
- width:100%;
- height:4px;
- background:var(--yellow);
- transform:scaleX(0);
- transition:.25s;
-}
-
-.player-card:hover{
- border-color:var(--yellow);
- transform:translateY(-8px);
- box-shadow:var(--glow);
-}
-
-.player-card:hover:after{transform:scaleX(1)}
-
-.pc-pos{
- position:absolute;
- top:16px;
- left:18px;
- font-family:"Barlow Condensed",sans-serif;
- font-size:38px;
- font-weight:900;
- font-style:italic;
- line-height:1;
- color:var(--yellow);
-}
-
-.pc-role{
- position:absolute;
- top:20px;
- right:16px;
- z-index:1;
- padding:5px 8px;
- border:1px solid rgba(245,237,0,.45);
- font-size:8px;
- font-weight:900;
- letter-spacing:1.5px;
- color:var(--yellow);
-}
-
-.pc-avatar{
- width:104px;
- height:104px;
- margin-bottom:18px;
- display:grid;
- place-items:center;
- border-radius:50%;
- background:
- radial-gradient(circle at 30% 25%,rgba(245,237,0,.32),rgba(245,237,0,.04) 62%),
- #151821;
- border:2px solid rgba(245,237,0,.5);
- font-family:"Barlow Condensed",sans-serif;
- font-size:42px;
- font-weight:900;
- font-style:italic;
- color:var(--yellow);
- box-shadow:0 0 30px rgba(245,237,0,.1);
-}
-
-.pc-name{
- font-family:"Barlow Condensed",sans-serif;
- font-size:27px;
- font-weight:900;
- font-style:italic;
- text-transform:uppercase;
- letter-spacing:.5px;
- overflow-wrap:anywhere;
-}
-
-.pc-meta{
- margin-top:7px;
- font-size:9px;
- font-weight:900;
- letter-spacing:2px;
- color:var(--muted);
-}
-
-.player-card.open-slot{
- justify-content:center;
- padding-top:28px;
- background:rgba(245,237,0,.03);
- border:1px dashed rgba(245,237,0,.5);
-}
-
-.player-card.open-slot .pc-avatar{
- border-style:dashed;
- background:transparent;
-}
-
-.player-card.open-slot .pc-meta{color:var(--yellow)}
+.squad-section{background:radial-gradient(ellipse at 50% 0,rgba(245,237,0,.07),transparent 55%),#0b0c11}
+.squad-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:18px;max-width:1150px;margin:auto}
+.player-card{position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;padding:62px 20px 28px;text-align:center;background:linear-gradient(160deg,#1c1f2a,#0f1117);border:1px solid var(--border);transition:.25s}
+.player-card:before{content:"";position:absolute;right:-45px;top:-45px;width:110px;height:110px;background:rgba(245,237,0,.06);transform:rotate(45deg)}
+.player-card:after{content:"";position:absolute;left:0;bottom:0;width:100%;height:4px;background:var(--yellow);transform:scaleX(0);transition:.25s}
+.player-card:hover{border-color:var(--yellow);transform:translateY(-8px);box-shadow:var(--glow)}.player-card:hover:after{transform:scaleX(1)}
+.pc-pos{position:absolute;top:16px;left:18px;font-family:"Barlow Condensed",sans-serif;font-size:38px;font-weight:900;font-style:italic;line-height:1;color:var(--yellow)}
+.pc-role{position:absolute;top:20px;right:16px;z-index:1;padding:5px 8px;border:1px solid rgba(245,237,0,.45);font-size:8px;font-weight:900;letter-spacing:1.5px;color:var(--yellow)}
+.pc-avatar{width:104px;height:104px;margin-bottom:18px;display:grid;place-items:center;border-radius:50%;background:radial-gradient(circle at 30% 25%,rgba(245,237,0,.32),rgba(245,237,0,.04) 62%),#151821;border:2px solid rgba(245,237,0,.5);font-family:"Barlow Condensed",sans-serif;font-size:42px;font-weight:900;font-style:italic;color:var(--yellow);box-shadow:0 0 30px rgba(245,237,0,.1)}
+.pc-name{font-family:"Barlow Condensed",sans-serif;font-size:27px;font-weight:900;font-style:italic;text-transform:uppercase;letter-spacing:.5px;overflow-wrap:anywhere}
+.pc-meta{margin-top:7px;font-size:9px;font-weight:900;letter-spacing:2px;color:var(--muted)}
+.player-card.open-slot{justify-content:center;padding-top:28px;background:rgba(245,237,0,.03);border:1px dashed rgba(245,237,0,.5)}
+.player-card.open-slot .pc-avatar{border-style:dashed;background:transparent}.player-card.open-slot .pc-meta{color:var(--yellow)}
 
 /* FAQ */
-.faq-section{
- background:
- radial-gradient(ellipse at 50% 100%,rgba(245,237,0,.05),transparent 55%),
- #11141b;
-}
-
-.faq-list{
- max-width:820px;
- margin:auto;
- display:flex;
- flex-direction:column;
- gap:12px;
-}
-
-.faq-item{
- background:linear-gradient(145deg,#191c25,#101218);
- border:1px solid var(--border);
- transition:.25s;
-}
-
-.faq-item:hover{border-color:rgba(245,237,0,.35)}
-
-.faq-item[open]{
- border-color:rgba(245,237,0,.55);
- box-shadow:var(--glow);
-}
-
-.faq-item summary{
- display:flex;
- align-items:center;
- justify-content:space-between;
- gap:16px;
- padding:20px 24px;
- font-size:13px;
- font-weight:800;
- list-style:none;
- cursor:pointer;
-}
-
+.faq-section{background:radial-gradient(ellipse at 50% 100%,rgba(245,237,0,.05),transparent 55%),#11141b}
+.faq-list{max-width:820px;margin:auto;display:flex;flex-direction:column;gap:12px}
+.faq-item{background:linear-gradient(145deg,#191c25,#101218);border:1px solid var(--border);transition:.25s}
+.faq-item:hover{border-color:rgba(245,237,0,.35)}.faq-item[open]{border-color:rgba(245,237,0,.55);box-shadow:var(--glow)}
+.faq-item summary{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 24px;font-size:13px;font-weight:800;list-style:none;cursor:pointer}
 .faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary:after{content:"+";flex-shrink:0;width:28px;height:28px;display:grid;place-items:center;border:1px solid rgba(245,237,0,.5);color:var(--yellow);font-size:18px;transition:.25s}
+.faq-item[open] summary:after{content:"–";background:var(--yellow);color:#08090c}
+.faq-item p{padding:0 24px 22px;font-size:12px;line-height:1.9;color:#aeb1bb}
 
-.faq-item summary:after{
- content:"+";
- flex-shrink:0;
- width:28px;
- height:28px;
- display:grid;
- place-items:center;
- border:1px solid rgba(245,237,0,.5);
- color:var(--yellow);
- font-size:18px;
- font-weight:700;
- transition:.25s;
-}
-
-.faq-item[open] summary:after{
- content:"–";
- background:var(--yellow);
- color:#08090c;
-}
-
-.faq-item p{
- padding:0 24px 22px;
- font-size:12px;
- line-height:1.9;
- color:#aeb1bb;
-}
-
-/* RETOUR EN HAUT */
-.to-top{
- position:fixed;
- right:24px;
- bottom:24px;
- z-index:1400;
- width:50px;
- height:50px;
- display:grid;
- place-items:center;
- background:var(--yellow);
- color:#08090c;
- border:none;
- font-size:20px;
- font-weight:900;
- cursor:pointer;
- clip-path:polygon(0 0,calc(100% - 12px) 0,100% 12px,100% 100%,12px 100%,0 calc(100% - 12px));
- opacity:0;
- visibility:hidden;
- transform:translateY(14px);
- transition:.25s;
-}
-
-.to-top.show{
- opacity:1;
- visibility:visible;
- transform:none;
-}
-
-.to-top.show:hover{
- background:#fff;
- transform:translateY(-4px);
-}
-
-@media(max-width:700px){
- .squad-grid{grid-template-columns:repeat(2,1fr);gap:12px}
- .player-card{padding:56px 12px 22px}
- .pc-avatar{width:84px;height:84px;font-size:34px}
- .pc-name{font-size:22px}
- .pc-role{display:none}
- .faq-item summary{padding:16px 18px;font-size:12px}
- .faq-item p{padding:0 18px 18px}
- .to-top{right:16px;bottom:16px}
-}
-
-/* ANIMATIONS */
-@keyframes appear{
- from{opacity:0;transform:translateY(25px)}
- to{opacity:1;transform:translateY(0)}
-}
-
-.hero-content{animation:appear .8s ease both}
-
-/* MOBILE */
-@media(max-width:1100px){
- header{
-  padding:15px 4%;
-  flex-wrap:wrap;
-  justify-content:center;
- }
-
- nav{
-  order:3;
-  width:100%;
-  justify-content:center;
-  flex-wrap:wrap;
-  padding:8px 0;
- }
-
- .hero-side{
-  right:4%;
-  width:185px;
- }
-
- .stats-grid{grid-template-columns:repeat(2,1fr)}
-}
-
-@media(max-width:800px){
- .hero-side{display:none}
-}
-
-@media(max-width:700px){
- header{gap:13px}
- .logo{font-size:28px}
- nav{gap:13px}
- nav a{font-size:9px}
- .discord-auth{
-  width:100%;
-  justify-content:center;
- }
-
- .discord-dropdown{
-  right:auto;
-  left:50%;
-  margin-left:-115px;
- }
-
- .hero{
-  min-height:600px;
-  padding:80px 7%;
-  background-position:60% center;
- }
-
- .hero h1{
-  font-size:clamp(80px,18vw,120px);
-  letter-spacing:-3px;
- }
-
- .hero-bottom{
-  left:7%;
-  font-size:8px;
- }
-
- section{padding:78px 6%}
- .club-values{grid-template-columns:1fr}
- .cards{grid-template-columns:1fr}
- .stat-card{padding:22px 13px}
- .stat-number{font-size:45px}
- .ticker{gap:13px;font-size:12px}
- .section-heading{margin-bottom:40px}
- footer{
-  justify-content:center;
-  text-align:center;
- }
-}
-
-@media(max-width:420px){
- .stats-grid{gap:9px}
- .stat-name{font-size:8px;letter-spacing:1px}
- .stat-number{font-size:39px}
- .discord-login{font-size:9px}
- .hero-buttons .btn{width:100%}
- .hero h1{font-size:76px}
- .loader-top{font-size:7px;letter-spacing:1px}
- .loader-emblem .emblem-line{width:40px}
- .emblem-text{font-size:70px}
- .loader-content h1{font-size:38px}
-}
-
-@media(prefers-reduced-motion:reduce){
- *,*:before,*:after{
-  scroll-behavior:auto!important;
-  animation-duration:.01ms!important;
-  transition-duration:.01ms!important;
- }
-}
+/* RECRUTEMENT + FOOTER */
+.recruitment{text-align:center;overflow:hidden;background:radial-gradient(ellipse at 50% 50%,rgba(245,237,0,.12),transparent 55%),linear-gradient(rgba(8,9,12,.9),rgba(8,9,12,.96)),url('https://images.unsplash.com/photo-1518604666860-9ed391f76460?w=1600') center/cover}
+.recruitment:before{content:"PBF";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font-family:"Barlow Condensed",sans-serif;font-size:clamp(180px,35vw,450px);font-weight:900;font-style:italic;color:rgba(255,255,255,.025);pointer-events:none}
+.recruitment>*{position:relative;z-index:1}.recruitment h2{font-family:"Barlow Condensed",sans-serif;font-size:clamp(50px,8vw,90px);font-weight:900;margin:20px 0;font-style:italic}
+.recruitment p{font-size:13px;color:#aeb1bb;margin-bottom:32px;line-height:1.9}
+footer{padding:38px 8%;background:#07080b;border-top:1px solid rgba(245,237,0,.2);display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+.footer-logo{font-size:29px}.footer-copy{font-size:10px;color:#777;letter-spacing:1px}
+.scroll-progress{position:fixed;top:0;left:0;width:0;height:3px;background:var(--yellow);box-shadow:0 0 12px var(--yellow);z-index:1200;pointer-events:none}
+.js .reveal{opacity:0;transform:translateY(25px);transition:opacity .65s ease,transform .65s cubic-bezier(.2,.7,.2,1)}
+.js .reveal.visible{opacity:1;transform:none}
+.to-top{position:fixed;right:24px;bottom:24px;z-index:1400;width:50px;height:50px;display:grid;place-items:center;background:var(--yellow);color:#08090c;border:0;font-size:20px;font-weight:900;clip-path:polygon(0 0,calc(100% - 12px) 0,100% 12px,100% 100%,12px 100%,0 calc(100% - 12px));opacity:0;visibility:hidden;transform:translateY(14px);transition:.25s}
+.to-top.show{opacity:1;visibility:visible;transform:none}.to-top.show:hover{background:white;transform:translateY(-4px)}
+html.reduce-motion{scroll-behavior:auto}html.reduce-motion *,html.reduce-motion *:before,html.reduce-motion *:after{animation:none!important;transition:none!important}
+@media(max-width:1100px){header{padding:15px 4%;flex-wrap:wrap;justify-content:center}nav{order:3;width:100%;justify-content:center;flex-wrap:wrap;padding:8px 0}.hero-side{right:4%;width:185px}.stats-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:800px){.hero-side{display:none}}
+@media(max-width:700px){header{gap:13px}.logo{font-size:28px}nav{gap:13px}nav a{font-size:9px}.discord-auth{width:100%;justify-content:center}.discord-dropdown{right:auto;left:50%;transform:translate(-50%,-8px)}.discord-menu-wrap.open .discord-dropdown{transform:translate(-50%,0)}.hero{min-height:600px;padding:80px 7%;background-position:60% center}.hero h1{font-size:clamp(80px,18vw,120px);letter-spacing:-3px}.hero-bottom{left:7%;font-size:8px}section{padding:78px 6%}.club-values,.cards{grid-template-columns:1fr}.stat-card{padding:22px 13px}.stat-number{font-size:45px}.ticker{gap:13px;font-size:12px}.section-heading{margin-bottom:40px}footer{justify-content:center;text-align:center}.squad-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.player-card{padding:56px 12px 22px}.pc-avatar{width:84px;height:84px;font-size:34px}.pc-name{font-size:22px}.pc-role{display:none}.faq-item summary{padding:16px 18px;font-size:12px}.faq-item p{padding:0 18px 18px}.to-top{right:16px;bottom:16px}}
+@media(max-width:420px){.stats-grid{gap:9px}.stat-name{font-size:8px;letter-spacing:1px}.stat-number{font-size:39px}.discord-login{font-size:9px}.hero-buttons .btn{width:100%}.hero h1{font-size:76px}.loader-top{font-size:7px;letter-spacing:1px}.loader-emblem .emblem-line{width:40px}.emblem-text{font-size:70px}.loader-content h1{font-size:38px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
 </style>
 </head>
-
 <body>
-
 <div class="scroll-progress" id="scrollProgress"></div>
 
-<!-- LOADER -->
-<div id="loader">
- <div class="loader-bg"></div>
-
- <div class="loader-content">
-  <div class="loader-top">
-   <span>EST. PROFIL BAS FC</span>
-   <span>FC 27 / PRO CLUBS</span>
-  </div>
-
-  <div class="loader-emblem">
-   <div class="emblem-line"></div>
-   <div class="emblem-text">PBF</div>
-   <div class="emblem-line"></div>
-  </div>
-
+<div id="loader" aria-label="Chargement de PROFIL BAS FC">
+ <div class="loader-bg"></div><div class="loader-content">
+  <div class="loader-top"><span>EST. PROFIL BAS FC</span><span>FC 27 / PRO CLUBS</span></div>
+  <div class="loader-emblem"><div class="emblem-line"></div><div class="emblem-text">PBF</div><div class="emblem-line"></div></div>
   <h1>PROFIL <span>BAS FC</span></h1>
-
-  <div class="loader-subtitle">
-   <span class="loader-dot"></span>
-   PRÉPARATION DU TERRAIN
-  </div>
-
-  <div class="loader-progress">
-   <div class="loader-progress-fill" id="loaderProgress"></div>
-  </div>
-
-  <div class="loader-bottom">
-   <span>INITIALISATION DU CLUB</span>
-   <strong id="loaderPercent">00%</strong>
-  </div>
- </div>
-
- <div class="loader-corner">PBF // 2026</div>
+  <div class="loader-subtitle"><span class="loader-dot"></span>PRÉPARATION DU TERRAIN</div>
+  <div class="loader-progress"><div class="loader-progress-fill" id="loaderProgress"></div></div>
+  <div class="loader-bottom"><span>INITIALISATION DU CLUB</span><strong id="loaderPercent">00%</strong></div>
+ </div><div class="loader-corner">PBF // 2026</div>
 </div>
 
-<!-- HEADER -->
 <header>
  <a href="#accueil" class="logo">PROFIL <span>BAS FC</span></a>
-
- <nav>
-  <a href="#accueil">ACCUEIL</a>
-  <a href="#club">LE CLUB</a>
-  <a href="#statistiques">STATISTIQUES</a>
-  <a href="#effectif">POSTES</a>
-  <a href="#joueurs">EFFECTIF</a>
-  <a href="#faq">FAQ</a>
-  <a href="#recrutement">RECRUTEMENT</a>
+ <nav aria-label="Navigation principale">
+  <a href="#accueil">ACCUEIL</a><a href="#club">LE CLUB</a><a href="#statistiques">STATISTIQUES</a><a href="#effectif">POSTES</a><a href="#joueurs">EFFECTIF</a><a href="#faq">FAQ</a><a href="#recrutement">RECRUTEMENT</a>
  </nav>
-
- <div class="discord-auth" id="discordAuth">
-  <a class="discord-login" href="discord-login.php">◉ SE CONNECTER AVEC DISCORD</a>
- </div>
+ <div class="discord-auth" id="discordAuth"><a class="discord-login" href="discord-login.php">◉ SE CONNECTER AVEC DISCORD</a></div>
 </header>
 
-<!-- HERO -->
+<main>
 <div class="hero" id="accueil">
  <div class="hero-content">
   <div class="tag">EA SPORTS FC 27 • PRO CLUBS</div>
-
   <h1>PROFIL<br><span>BAS FC</span></h1>
-
-  <p class="hero-description">
-   Le collectif avant les individualités.<br>
-   Une équipe, une ambition, une identité.<br>
-   Bienvenue dans notre univers.
-  </p>
-
-  <div class="hero-buttons">
-   <a href="https://discord.gg/uUpRre9b4P" class="btn">REJOINDRE LE CLUB ↗</a>
-   <a href="#club" class="btn btn-outline">DÉCOUVRIR LE CLUB</a>
-  </div>
+  <p class="hero-description">Le collectif avant les individualités.<br>Une équipe, une ambition, une identité.<br>Bienvenue dans notre univers.</p>
+  <div class="hero-buttons"><a href="https://discord.gg/uUpRre9b4P" class="btn" target="_blank" rel="noopener noreferrer">REJOINDRE LE CLUB ↗</a><a href="#club" class="btn btn-outline">DÉCOUVRIR LE CLUB</a></div>
  </div>
-
- <div class="hero-side">
-  <small>IDENTITÉ DU CLUB</small>
-  <strong>PRO<br>BAS.</strong>
-  <p>EA SPORTS FC 27<br>CLUB PRO CLUBS</p>
-  <div class="side-line"></div>
- </div>
-
+ <div class="hero-side"><small>IDENTITÉ DU CLUB</small><strong>PRO<br>BAS.</strong><p>EA SPORTS FC 27<br>CLUB PRO CLUBS</p><div class="side-line"></div></div>
  <div class="hero-bottom">UN CLUB • UNE IDENTITÉ • UNE AMBITION</div>
 </div>
 
-<!-- BANDEAU -->
-<div class="ticker">
- <span>✦</span> PROFIL BAS FC
- <span>✦</span> EA SPORTS FC 27
- <span>✦</span> PRO CLUBS
- <span>✦</span> COLLECTIF AVANT TOUT
-</div>
+<div class="ticker"><span>✦</span> PROFIL BAS FC <span>✦</span> EA SPORTS FC 27 <span>✦</span> PRO CLUBS <span>✦</span> COLLECTIF AVANT TOUT</div>
 
-<!-- CLUB -->
 <section class="club-section" id="club">
- <div class="section-heading">
-  <div class="section-kicker">NOTRE IDENTITÉ</div>
-  <h2>BIENVENUE CHEZ <span>PROFIL BAS FC</span></h2>
- </div>
-
- <p class="club-text">
-  Un club Pro Clubs construit autour du collectif, du respect,
-  du jeu et de la compétition. Notre objectif : progresser ensemble,
-  construire une vraie équipe et gagner ensemble.
- </p>
-
+ <div class="section-heading"><div class="section-kicker">NOTRE IDENTITÉ</div><h2>BIENVENUE CHEZ <span>PROFIL BAS FC</span></h2></div>
+ <p class="club-text">Un club Pro Clubs construit autour du collectif, du respect, du jeu et de la compétition. Notre objectif : progresser ensemble, construire une vraie équipe et gagner ensemble.</p>
  <div class="club-values">
-  <div class="value-card">
-   <div class="value-icon">🤝</div>
-   <h3>COLLECTIF</h3>
-   <p>Une équipe soudée avant tout.</p>
-  </div>
-
-  <div class="value-card">
-   <div class="value-icon">🎯</div>
-   <h3>AMBITION</h3>
-   <p>Progresser et viser toujours plus haut.</p>
-  </div>
-
-  <div class="value-card">
-   <div class="value-icon">🏆</div>
-   <h3>COMPÉTITION</h3>
-   <p>Donner le maximum sur chaque match.</p>
-  </div>
+  <div class="value-card"><div class="value-icon">🤝</div><h3>COLLECTIF</h3><p>Une équipe soudée avant tout.</p></div>
+  <div class="value-card"><div class="value-icon">🎯</div><h3>AMBITION</h3><p>Progresser et viser toujours plus haut.</p></div>
+  <div class="value-card"><div class="value-icon">🏆</div><h3>COMPÉTITION</h3><p>Donner le maximum sur chaque match.</p></div>
  </div>
 </section>
 
-<!-- STATISTIQUES -->
 <section class="stats-section" id="statistiques">
  <div class="section-heading">
-  <div class="section-kicker">EA SPORTS FC 27</div>
-  <h2>STATISTIQUES <span>DU CLUB</span></h2>
+  <div class="section-kicker">EA SPORTS FC 27</div><h2>STATISTIQUES <span>DU CLUB</span></h2>
   <div class="club-label">PROFIL BAS FC • CLUB ID : 350967</div>
   <p style="margin-top:18px">Les performances de notre équipe sur le terrain.</p>
  </div>
-
  <div class="stats-grid">
-  <div class="stat-card">
-   <div class="stat-icon">⚽</div>
-   <div class="stat-number" id="games">74</div>
-   <div class="stat-name">MATCHS JOUÉS</div>
-  </div>
-
-  <div class="stat-card">
-   <div class="stat-icon">🏆</div>
-   <div class="stat-number" id="wins">39</div>
-   <div class="stat-name">VICTOIRES</div>
-  </div>
-
-  <div class="stat-card">
-   <div class="stat-icon">❌</div>
-   <div class="stat-number" id="losses">25</div>
-   <div class="stat-name">DÉFAITES</div>
-  </div>
-
-  <div class="stat-card">
-   <div class="stat-icon">🤝</div>
-   <div class="stat-number" id="ties">10</div>
-   <div class="stat-name">MATCHS NULS</div>
-  </div>
-
-  <div class="stat-card">
-   <div class="stat-icon">🥅</div>
-   <div class="stat-number" id="goals">208</div>
-   <div class="stat-name">BUTS MARQUÉS</div>
-  </div>
-
-  <div class="stat-card">
-   <div class="stat-icon">🛡️</div>
-   <div class="stat-number" id="against">168</div>
-   <div class="stat-name">BUTS ENCAISSÉS</div>
-  </div>
-
-  <div class="stat-card">
-   <div class="stat-icon">🧤</div>
-   <div class="stat-number" id="clean">23</div>
-   <div class="stat-name">CLEAN SHEETS</div>
-  </div>
-
-  <div class="stat-card">
-   <div class="stat-icon">⭐</div>
-   <div class="stat-number" id="points">75</div>
-   <div class="stat-name">POINTS</div>
-  </div>
+  <div class="stat-card"><div class="stat-icon">⚽</div><div class="stat-number" id="games">74</div><div class="stat-name">MATCHS JOUÉS</div></div>
+  <div class="stat-card"><div class="stat-icon">🏆</div><div class="stat-number" id="wins">39</div><div class="stat-name">VICTOIRES</div></div>
+  <div class="stat-card"><div class="stat-icon">❌</div><div class="stat-number" id="losses">25</div><div class="stat-name">DÉFAITES</div></div>
+  <div class="stat-card"><div class="stat-icon">🤝</div><div class="stat-number" id="ties">10</div><div class="stat-name">MATCHS NULS</div></div>
+  <div class="stat-card"><div class="stat-icon">🥅</div><div class="stat-number" id="goals">208</div><div class="stat-name">BUTS MARQUÉS</div></div>
+  <div class="stat-card"><div class="stat-icon">🛡️</div><div class="stat-number" id="against">168</div><div class="stat-name">BUTS ENCAISSÉS</div></div>
+  <div class="stat-card"><div class="stat-icon">🧤</div><div class="stat-number" id="clean">23</div><div class="stat-name">CLEAN SHEETS</div></div>
+  <div class="stat-card"><div class="stat-icon">⭐</div><div class="stat-number" id="points">75</div><div class="stat-name">POINTS</div></div>
  </div>
-
- <div class="division-box">
-  <small>MEILLEURE DIVISION</small>
-  <strong>DIVISION <span id="division">3</span></strong>
- </div>
-
- <button class="refresh-btn" onclick="loadClubStats()">
-  ↻ ACTUALISER LES STATISTIQUES
- </button>
-
- <div id="stats-status">Statistiques en attente d'actualisation...</div>
+ <div class="division-box"><small>MEILLEURE DIVISION</small><strong>DIVISION <span id="division">3</span></strong></div>
+ <button class="refresh-btn" id="refreshStats" type="button">↻ ACTUALISER LES STATISTIQUES</button>
+ <div id="stats-status" role="status" aria-live="polite">Statistiques en attente d'actualisation...</div>
 </section>
 
-<!-- POSTES -->
 <section class="roster-section" id="effectif">
- <div class="section-heading">
-  <div class="section-kicker">NOTRE ÉQUIPE</div>
-  <h2>LES POSTES <span>DU CLUB</span></h2>
-  <p>Chaque poste a son importance dans le collectif.</p>
- </div>
-
+ <div class="section-heading"><div class="section-kicker">NOTRE ÉQUIPE</div><h2>LES POSTES <span>DU CLUB</span></h2><p>Chaque poste a son importance dans le collectif.</p></div>
  <div class="cards">
-  <div class="card">
-   <div class="card-icon">⚽</div>
-   <h3>ATTAQUE</h3>
-   <p>BU • AG • AD</p>
-  </div>
-
-  <div class="card">
-   <div class="card-icon">🎯</div>
-   <h3>MILIEU</h3>
-   <p>MOC • MC • MDC</p>
-  </div>
-
-  <div class="card">
-   <div class="card-icon">🛡️</div>
-   <h3>DÉFENSE</h3>
-   <p>DC • DG • DD • GB</p>
-  </div>
+  <div class="card"><div class="card-icon">⚽</div><h3>ATTAQUE</h3><p>BU • AG • AD</p></div>
+  <div class="card"><div class="card-icon">🎯</div><h3>MILIEU</h3><p>MOC • MC • MDC</p></div>
+  <div class="card"><div class="card-icon">🛡️</div><h3>DÉFENSE</h3><p>DC • DG • DD • GB</p></div>
  </div>
 </section>
 
-<!-- EFFECTIF -->
 <section class="squad-section" id="joueurs">
- <div class="section-heading">
-  <div class="section-kicker">LE GROUPE</div>
-  <h2>NOTRE <span>EFFECTIF</span></h2>
-  <p>Les joueurs qui portent les couleurs de PROFIL BAS FC.</p>
- </div>
-
+ <div class="section-heading"><div class="section-kicker">LE GROUPE</div><h2>NOTRE <span>EFFECTIF</span></h2><p>Les joueurs qui portent les couleurs de PROFIL BAS FC.</p></div>
  <div class="squad-grid" id="squadGrid"></div>
 </section>
 
-<!-- FAQ -->
 <section class="faq-section" id="faq">
- <div class="section-heading">
-  <div class="section-kicker">BESOIN D'INFOS ?</div>
-  <h2>QUESTIONS <span>FRÉQUENTES</span></h2>
-  <p>Tout ce qu'il faut savoir avant de nous rejoindre.</p>
- </div>
-
+ <div class="section-heading"><div class="section-kicker">BESOIN D'INFOS ?</div><h2>QUESTIONS <span>FRÉQUENTES</span></h2><p>Tout ce qu'il faut savoir avant de nous rejoindre.</p></div>
  <div class="faq-list">
-  <details class="faq-item">
-   <summary>Comment postuler au club ?</summary>
-   <p>Rejoins notre Discord et présente-toi : ton gamertag, ta plateforme, ton poste préféré et tes disponibilités. Une fois connecté avec Discord, tu peux aussi préparer ta candidature depuis « Mon profil joueur » dans le menu de ton compte, puis la coller sur le serveur.</p>
-  </details>
-
-  <details class="faq-item">
-   <summary>Quels postes puis-je jouer ?</summary>
-   <p>Tous les postes existent dans le club : attaque, milieu, défense et gardien. Indique ton poste préféré et un poste secondaire, le staff te répondra selon les besoins du moment.</p>
-  </details>
-
-  <details class="faq-item">
-   <summary>Quel est l'état d'esprit du club ?</summary>
-   <p>Le collectif avant les individualités. On joue pour progresser ensemble, construire une vraie équipe et donner le maximum sur chaque match, dans le respect de chacun.</p>
-  </details>
-
-  <details class="faq-item">
-   <summary>Où voir les statistiques du club ?</summary>
-   <p>Dans la section Statistiques de cette page. Elles viennent des données EA SPORTS FC 27 et se mettent à jour automatiquement, ou à la demande avec le bouton « Actualiser les statistiques ».</p>
-  </details>
-
-  <details class="faq-item">
-   <summary>Comment contacter le staff ?</summary>
-   <p>Directement sur notre serveur Discord, via le bouton « Rejoindre le club ». C'est le moyen le plus rapide pour poser une question ou candidater.</p>
-  </details>
+  <details class="faq-item"><summary>Comment postuler au club ?</summary><p>Rejoins notre Discord et présente-toi : ton gamertag, ta plateforme, ton poste préféré et tes disponibilités. Une fois connecté avec Discord, tu peux aussi préparer ta candidature depuis « Mon profil joueur » dans le menu de ton compte, puis la coller sur le serveur.</p></details>
+  <details class="faq-item"><summary>Quels postes puis-je jouer ?</summary><p>Tous les postes existent dans le club : attaque, milieu, défense et gardien. Indique ton poste préféré et un poste secondaire, le staff te répondra selon les besoins du moment.</p></details>
+  <details class="faq-item"><summary>Quel est l'état d'esprit du club ?</summary><p>Le collectif avant les individualités. On joue pour progresser ensemble, construire une vraie équipe et donner le maximum sur chaque match, dans le respect de chacun.</p></details>
+  <details class="faq-item"><summary>Où voir les statistiques du club ?</summary><p>Dans la section Statistiques de cette page. Elles viennent des données EA SPORTS FC 27 et se mettent à jour automatiquement, ou à la demande avec le bouton « Actualiser les statistiques ».</p></details>
+  <details class="faq-item"><summary>Comment contacter le staff ?</summary><p>Directement sur notre serveur Discord, via le bouton « Rejoindre le club ». C'est le moyen le plus rapide pour poser une question ou candidater.</p></details>
  </div>
 </section>
 
-<!-- RECRUTEMENT -->
 <section class="recruitment" id="recrutement">
- <div class="section-kicker">RECRUTEMENT OUVERT</div>
- <h2>REJOINS <span>L'AVENTURE</span></h2>
-
- <p>
-  Tu recherches un club Pro Clubs sur FC 27 ?<br>
-  Viens représenter PROFIL BAS FC.
- </p>
-
- <a href="https://discord.gg/uUpRre9b4P" class="btn">
-  POSTULER MAINTENANT ↗
- </a>
+ <div class="section-kicker">RECRUTEMENT OUVERT</div><h2>REJOINS <span>L'AVENTURE</span></h2>
+ <p>Tu recherches un club Pro Clubs sur FC 27 ?<br>Viens représenter PROFIL BAS FC.</p>
+ <a href="https://discord.gg/uUpRre9b4P" class="btn" target="_blank" rel="noopener noreferrer">POSTULER MAINTENANT ↗</a>
 </section>
+</main>
 
-<!-- FOOTER -->
-<footer>
- <div class="footer-logo">PROFIL <span>BAS FC</span></div>
- <div class="footer-copy">© 2026 PROFIL BAS FC — TOUS DROITS RÉSERVÉS / BY YAHKMA</div>
-</footer>
+<footer><div class="footer-logo">PROFIL <span>BAS FC</span></div><div class="footer-copy">© 2026 PROFIL BAS FC — TOUS DROITS RÉSERVÉS / BY YAHKMA</div></footer>
 
 <!-- PROFIL JOUEUR -->
 <div id="playerProfile" aria-hidden="true">
- <div class="settings-box" role="dialog" aria-label="Mon profil joueur">
-  <div class="settings-head">
-   <strong>MON PROFIL JOUEUR</strong>
-   <button class="settings-close" id="playerClose" type="button" aria-label="Fermer">✕</button>
-  </div>
-
+ <div class="settings-box" role="dialog" aria-modal="true" aria-label="Mon profil joueur">
+  <div class="settings-head"><strong>MON PROFIL JOUEUR</strong><button class="settings-close" id="playerClose" type="button" aria-label="Fermer">✕</button></div>
   <form class="player-form" id="playerForm" autocomplete="off">
-   <label>
-    GAMERTAG / PSN / EA ID
-    <input type="text" id="pGamertag" maxlength="40" placeholder="Ton pseudo en jeu">
-   </label>
-
-   <label>
-    PLATEFORME
-    <select id="pPlatform">
-     <option value="">Non précisée</option>
-     <option value="PlayStation 5">PlayStation 5</option>
-     <option value="Xbox Series">Xbox Series</option>
-     <option value="PC">PC</option>
-    </select>
-   </label>
-
-   <label>
-    POSTE PRÉFÉRÉ
-    <select id="pPosition">
-     <option value="">Non précisé</option>
-     <option value="BU">BU — Buteur</option>
-     <option value="AG">AG — Ailier gauche</option>
-     <option value="AD">AD — Ailier droit</option>
-     <option value="MOC">MOC — Milieu offensif</option>
-     <option value="MC">MC — Milieu central</option>
-     <option value="MDC">MDC — Milieu défensif</option>
-     <option value="DG">DG — Défenseur gauche</option>
-     <option value="DD">DD — Défenseur droit</option>
-     <option value="DC">DC — Défenseur central</option>
-     <option value="GB">GB — Gardien</option>
-    </select>
-   </label>
-
-   <label>
-    POSTE SECONDAIRE
-    <select id="pPosition2">
-     <option value="">Aucun</option>
-     <option value="BU">BU — Buteur</option>
-     <option value="AG">AG — Ailier gauche</option>
-     <option value="AD">AD — Ailier droit</option>
-     <option value="MOC">MOC — Milieu offensif</option>
-     <option value="MC">MC — Milieu central</option>
-     <option value="MDC">MDC — Milieu défensif</option>
-     <option value="DG">DG — Défenseur gauche</option>
-     <option value="DD">DD — Défenseur droit</option>
-     <option value="DC">DC — Défenseur central</option>
-     <option value="GB">GB — Gardien</option>
-    </select>
-   </label>
-
-   <label>
-    DISPONIBILITÉS
-    <input type="text" id="pAvailability" maxlength="80" placeholder="Ex : soirs en semaine, week-end">
-   </label>
-
-   <div class="player-actions">
-    <button type="submit" class="btn-save">ENREGISTRER</button>
-    <button type="button" class="btn-copy" id="pCopy">COPIER MA CANDIDATURE</button>
-   </div>
-
-   <div class="player-status" id="pStatus"></div>
+   <label>GAMERTAG / PSN / EA ID<input type="text" id="pGamertag" maxlength="40" placeholder="Ton pseudo en jeu"></label>
+   <label>PLATEFORME<select id="pPlatform"><option value="">Non précisée</option><option value="PlayStation 5">PlayStation 5</option><option value="Xbox Series">Xbox Series</option><option value="PC">PC</option></select></label>
+   <label>POSTE PRÉFÉRÉ<select id="pPosition"><option value="">Non précisé</option><option value="BU">BU — Buteur</option><option value="AG">AG — Ailier gauche</option><option value="AD">AD — Ailier droit</option><option value="MOC">MOC — Milieu offensif</option><option value="MC">MC — Milieu central</option><option value="MDC">MDC — Milieu défensif</option><option value="DG">DG — Défenseur gauche</option><option value="DD">DD — Défenseur droit</option><option value="DC">DC — Défenseur central</option><option value="GB">GB — Gardien</option></select></label>
+   <label>POSTE SECONDAIRE<select id="pPosition2"><option value="">Aucun</option><option value="BU">BU — Buteur</option><option value="AG">AG — Ailier gauche</option><option value="AD">AD — Ailier droit</option><option value="MOC">MOC — Milieu offensif</option><option value="MC">MC — Milieu central</option><option value="MDC">MDC — Milieu défensif</option><option value="DG">DG — Défenseur gauche</option><option value="DD">DD — Défenseur droit</option><option value="DC">DC — Défenseur central</option><option value="GB">GB — Gardien</option></select></label>
+   <label>DISPONIBILITÉS<input type="text" id="pAvailability" maxlength="80" placeholder="Ex : soirs en semaine, week-end"></label>
+   <div class="player-actions"><button type="submit" class="btn-save">ENREGISTRER</button><button type="button" class="btn-copy" id="pCopy">COPIER MA CANDIDATURE</button></div>
+   <div class="player-status" id="pStatus" role="status" aria-live="polite"></div>
   </form>
-
   <div class="settings-note">PROFIL ENREGISTRÉ SUR CET APPAREIL. COLLE TA CANDIDATURE SUR LE DISCORD DU CLUB.</div>
  </div>
 </div>
 
 <!-- PARAMÈTRES -->
 <div id="settings" aria-hidden="true">
- <div class="settings-box" role="dialog" aria-label="Paramètres">
-  <div class="settings-head">
-   <strong>PARAMÈTRES</strong>
-   <button class="settings-close" type="button" aria-label="Fermer">✕</button>
-  </div>
-
-  <label class="setting-row">
-   <span>
-    <b>Réduire les animations</b>
-    <small>Désactive les effets de mouvement du site.</small>
-   </span>
-   <input type="checkbox" id="setReduceMotion">
-   <span class="switch"></span>
-  </label>
-
-  <label class="setting-row">
-   <span>
-    <b>Actualisation automatique des stats</b>
-    <small>Met à jour les statistiques du club toutes les 15 minutes.</small>
-   </span>
-   <input type="checkbox" id="setAutoRefresh">
-   <span class="switch"></span>
-  </label>
-
-  <label class="setting-row">
-   <span>
-    <b>Écran de chargement</b>
-    <small>Affiche l'intro PBF à l'ouverture du site (prend effet à la prochaine visite).</small>
-   </span>
-   <input type="checkbox" id="setShowLoader">
-   <span class="switch"></span>
-  </label>
-
+ <div class="settings-box" role="dialog" aria-modal="true" aria-label="Paramètres">
+  <div class="settings-head"><strong>PARAMÈTRES</strong><button class="settings-close" type="button" aria-label="Fermer">✕</button></div>
+  <label class="setting-row"><span><b>Réduire les animations</b><small>Désactive les effets de mouvement du site.</small></span><input type="checkbox" id="setReduceMotion"><span class="switch"></span></label>
+  <label class="setting-row"><span><b>Actualisation automatique des stats</b><small>Met à jour les statistiques du club toutes les 15 minutes.</small></span><input type="checkbox" id="setAutoRefresh"><span class="switch"></span></label>
+  <label class="setting-row"><span><b>Écran de chargement</b><small>Affiche l'intro PBF à l'ouverture du site (prend effet à la prochaine visite).</small></span><input type="checkbox" id="setShowLoader"><span class="switch"></span></label>
   <div class="settings-note">LES PARAMÈTRES SONT ENREGISTRÉS SUR CET APPAREIL.</div>
  </div>
 </div>
 
 <!-- LIGHTBOX -->
-<div id="lightbox" aria-hidden="true">
- <button class="lightbox-close" type="button" aria-label="Fermer">✕</button>
- <img id="lightboxImg" src="" alt="Avatar Discord agrandi">
+<div id="lightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Photo de profil agrandie">
+ <button class="lightbox-close" type="button" aria-label="Fermer">✕</button><img id="lightboxImg" src="" alt="Avatar Discord agrandi">
 </div>
-
-<script>
-/* =====================================
-   LOADER PREMIUM - ANTI CHARGEMENT INFINI
-===================================== */
-
-/* Paramètres utilisateur (enregistrés sur l'appareil) */
-const SETTINGS_KEY = "pbf_settings";
-const defaultSettings = {
- reduceMotion:false,
- autoRefresh:true,
- showLoader:true
-};
-
-function loadSettings(){
- try{
-  return Object.assign(
-   {},
-   defaultSettings,
-   JSON.parse(localStorage.getItem(SETTINGS_KEY) || "{}")
-  );
- }catch(error){
-  return Object.assign({},defaultSettings);
- }
-}
-
-function saveSettings(value){
- try{
-  localStorage.setItem(SETTINGS_KEY,JSON.stringify(value));
- }catch(error){}
-}
-
-let settings = loadSettings();
-
-function applySettings(){
- document.documentElement.classList.toggle(
-  "reduce-motion",
-  Boolean(settings.reduceMotion)
- );
-}
-
-applySettings();
-
-let loaderHidden = false;
-let loaderValue = 0;
-const loaderStartedAt = Date.now();
-const loaderMinimumTime = settings.showLoader ? 1200 : 0;
-
-const loaderProgress = document.getElementById("loaderProgress");
-const loaderPercent = document.getElementById("loaderPercent");
-
-const loaderInterval = setInterval(() => {
- if(loaderHidden){
-  clearInterval(loaderInterval);
-  return;
- }
-
- // Progression visuelle jusqu'à 90 %
- loaderValue = Math.min(loaderValue + Math.random() * 5, 90);
-
- if(loaderProgress){
-  loaderProgress.style.width = loaderValue + "%";
- }
-
- if(loaderPercent){
-  loaderPercent.textContent = Math.floor(loaderValue) + "%";
- }
-},150);
-
-function hideLoader(){
- if(loaderHidden)return;
-
- const elapsed = Date.now() - loaderStartedAt;
- const remaining = Math.max(0,loaderMinimumTime - elapsed);
-
- setTimeout(() => {
-  if(loaderHidden)return;
-
-  loaderHidden = true;
-  clearInterval(loaderInterval);
-
-  if(loaderProgress){
-   loaderProgress.style.width = "100%";
-  }
-
-  if(loaderPercent){
-   loaderPercent.textContent = "100%";
-  }
-
-  const loader = document.getElementById("loader");
-
-  if(loader){
-   setTimeout(() => {
-    loader.classList.add("hide");
-
-    setTimeout(() => {
-     if(loader.parentNode){
-      loader.remove();
-     }
-    },900);
-   },250);
-  }
- },remaining);
-}
-
-// Attendre le chargement complet du navigateur
-if(document.readyState === "complete"){
- hideLoader();
-}else{
- window.addEventListener("load",hideLoader,{once:true});
-}
-
-// Sécurité : le loader ne peut pas rester bloqué
-setTimeout(hideLoader,4000);
-
-
-/* =====================================
-   CONNEXION DISCORD
-===================================== */
-
-async function loadDiscordAccount(){
- const container = document.getElementById("discordAuth");
-
- if(!container)return;
-
- try{
-  const controller = new AbortController();
-
-  const timeout = setTimeout(()=>{
-   controller.abort();
-  },5000);
-
-  const response = await fetch(
-   "discord-me.php?t="+Date.now(),
-   {
-    cache:"no-store",
-    credentials:"same-origin",
-    signal:controller.signal
-   }
-  );
-
-  clearTimeout(timeout);
-
-  const data = await response.json().catch(()=>({}));
-
-  container.replaceChildren();
-
-  const connected = Boolean(data.loggedIn || data.connected);
-  const user = data.user || data;
-
-  if(response.ok && connected){
-   // Le bloc avatar + pseudo est maintenant un lien vers le profil Discord
-   const wrap = document.createElement("div");
-   wrap.className = "discord-menu-wrap";
-
-   const account = document.createElement("button");
-   account.type = "button";
-   account.className = "discord-account";
-   account.setAttribute("aria-haspopup","true");
-   account.setAttribute("aria-expanded","false");
-
-   const discordId = user.id || data.id || "";
-
-   let avatarUrl = user.avatar || data.avatar || "";
-
-   if(
-    avatarUrl &&
-    !avatarUrl.startsWith("http") &&
-    user.id
-   ){
-    avatarUrl =
-     `https://cdn.discordapp.com/avatars/${user.id}/${avatarUrl}.png`;
-   }
-
-   if(avatarUrl){
-    const avatar = document.createElement("img");
-
-    avatar.className = "discord-avatar";
-    avatar.src = avatarUrl;
-    avatar.alt = "Avatar Discord";
-
-    avatar.onerror = ()=>avatar.remove();
-
-    account.appendChild(avatar);
-   }
-
-   const username = document.createElement("span");
-
-   username.className = "discord-username";
-
-   username.textContent =
-    data.displayName ||
-    user.global_name ||
-    user.username ||
-    "Joueur";
-
-   account.appendChild(username);
-
-   const chevron = document.createElement("span");
-
-   chevron.className = "discord-chevron";
-   chevron.textContent = "▾";
-
-   account.appendChild(chevron);
-
-   /* Menu déroulant du profil */
-   const menu = document.createElement("div");
-
-   menu.className = "discord-dropdown";
-   menu.setAttribute("role","menu");
-
-   const head = document.createElement("div");
-
-   head.className = "dropdown-head";
-   head.textContent = "MON COMPTE";
-
-   menu.appendChild(head);
-
-   if(discordId){
-    const profileLink = createMenuItem("a","👤","Mon profil Discord");
-
-    profileLink.href =
-     "https://discord.com/users/" + encodeURIComponent(discordId);
-    profileLink.target = "_blank";
-    profileLink.rel = "noopener noreferrer";
-
-    menu.appendChild(profileLink);
-   }
-
-   if(avatarUrl){
-    const enlarge = createMenuItem("button","🔍","Agrandir ma photo");
-
-    enlarge.addEventListener("click",()=>{
-     closeProfileMenus();
-     openLightbox(avatarUrl);
-    });
-
-    menu.appendChild(enlarge);
-   }
-
-   const playerItem = createMenuItem("button","🎮","Mon profil joueur");
-
-   playerItem.addEventListener("click",()=>{
-    closeProfileMenus();
-    openPlayerProfile();
-   });
-
-   menu.appendChild(playerItem);
-
-   const clubDiscord = createMenuItem("a","🎧","Discord du club");
-
-   clubDiscord.href = "https://discord.gg/uUpRre9b4P";
-   clubDiscord.target = "_blank";
-   clubDiscord.rel = "noopener noreferrer";
-
-   menu.appendChild(clubDiscord);
-
-   const settingsItem = createMenuItem("button","⚙️","Paramètres");
-
-   settingsItem.addEventListener("click",()=>{
-    closeProfileMenus();
-    openSettings();
-   });
-
-   menu.appendChild(settingsItem);
-
-   const divider = document.createElement("div");
-
-   divider.className = "dropdown-divider";
-   menu.appendChild(divider);
-
-   const logout = createMenuItem("a","🚪","Déconnexion");
-
-   logout.classList.add("danger");
-   logout.href = "discord-logout.php";
-
-   menu.appendChild(logout);
-
-   account.addEventListener("click",(e)=>{
-    e.stopPropagation();
-
-    const isOpen = wrap.classList.toggle("open");
-    account.setAttribute("aria-expanded",String(isOpen));
-   });
-
-   wrap.append(account,menu);
-   container.appendChild(wrap);
-
-  }else{
-   showDiscordLogin(container);
-  }
-
- }catch(error){
-  console.error("Erreur connexion Discord :",error);
-  showDiscordLogin(container);
- }
-}
-
-/* =====================================
-   AGRANDIR L'IMAGE (LIGHTBOX)
-===================================== */
-
-const lightbox = document.getElementById("lightbox");
-const lightboxImg = document.getElementById("lightboxImg");
-
-function openLightbox(url){
- if(!lightbox || !lightboxImg || !url)return;
-
- // Version haute définition de l'avatar Discord
- const bigUrl = url.includes("cdn.discordapp.com")
-  ? url.split("?")[0] + "?size=512"
-  : url;
-
- lightboxImg.src = bigUrl;
- lightbox.classList.add("open");
- lightbox.setAttribute("aria-hidden","false");
-}
-
-function closeLightbox(){
- if(!lightbox)return;
-
- lightbox.classList.remove("open");
- lightbox.setAttribute("aria-hidden","true");
-}
-
-if(lightbox){
- lightbox.addEventListener("click",closeLightbox);
-}
-
-document.addEventListener("keydown",(e)=>{
- if(e.key === "Escape"){
-  closeLightbox();
-  closeSettings();
-  closePlayerProfile();
-  closeProfileMenus();
- }
-});
-
-
-/* =====================================
-   MENU PROFIL + PARAMÈTRES
-===================================== */
-
-const settingsPanel = document.getElementById("settings");
-
-const settingInputs = {
- reduceMotion:document.getElementById("setReduceMotion"),
- autoRefresh:document.getElementById("setAutoRefresh"),
- showLoader:document.getElementById("setShowLoader")
-};
-
-Object.keys(settingInputs).forEach(key=>{
- const input = settingInputs[key];
-
- if(!input)return;
-
- input.checked = Boolean(settings[key]);
-
- input.addEventListener("change",()=>{
-  settings[key] = input.checked;
-  saveSettings(settings);
-  applySettings();
- });
-});
-
-function openSettings(){
- if(!settingsPanel)return;
-
- settingsPanel.classList.add("open");
- settingsPanel.setAttribute("aria-hidden","false");
-}
-
-function closeSettings(){
- if(!settingsPanel)return;
-
- settingsPanel.classList.remove("open");
- settingsPanel.setAttribute("aria-hidden","true");
-}
-
-if(settingsPanel){
- settingsPanel.addEventListener("click",(e)=>{
-  if(e.target === settingsPanel)closeSettings();
- });
-
- const settingsClose = settingsPanel.querySelector(".settings-close");
-
- if(settingsClose){
-  settingsClose.addEventListener("click",closeSettings);
- }
-}
-
-/* ---------- Profil joueur (enregistré sur l'appareil) ---------- */
-
-const PLAYER_KEY = "pbf_player_profile";
-
-const playerPanel = document.getElementById("playerProfile");
-const playerForm = document.getElementById("playerForm");
-const playerStatus = document.getElementById("pStatus");
-const playerCopy = document.getElementById("pCopy");
-const playerClose = document.getElementById("playerClose");
-
-const playerFields = {
- gamertag:document.getElementById("pGamertag"),
- platform:document.getElementById("pPlatform"),
- position:document.getElementById("pPosition"),
- position2:document.getElementById("pPosition2"),
- availability:document.getElementById("pAvailability")
-};
-
-function loadPlayerProfile(){
- try{
-  const saved = JSON.parse(localStorage.getItem(PLAYER_KEY) || "{}");
-
-  return saved && typeof saved === "object" ? saved : {};
- }catch(error){
-  return {};
- }
-}
-
-function fillPlayerForm(){
- const saved = loadPlayerProfile();
-
- Object.keys(playerFields).forEach(key=>{
-  const field = playerFields[key];
-
-  if(field && typeof saved[key] === "string"){
-   field.value = saved[key];
-  }
- });
-}
-
-function readPlayerForm(){
- const values = {};
-
- Object.keys(playerFields).forEach(key=>{
-  const field = playerFields[key];
-
-  values[key] = field ? field.value.trim() : "";
- });
-
- return values;
-}
-
-function setPlayerStatus(text){
- if(playerStatus){
-  playerStatus.textContent = text;
- }
-}
-
-function openPlayerProfile(){
- if(!playerPanel)return;
-
- fillPlayerForm();
- setPlayerStatus("");
-
- playerPanel.classList.add("open");
- playerPanel.setAttribute("aria-hidden","false");
-}
-
-function closePlayerProfile(){
- if(!playerPanel)return;
-
- playerPanel.classList.remove("open");
- playerPanel.setAttribute("aria-hidden","true");
-}
-
-function buildApplicationText(profile){
- const lines = ["🎮 Candidature PROFIL BAS FC"];
-
- lines.push("Gamertag : " + profile.gamertag);
-
- if(profile.platform)lines.push("Plateforme : " + profile.platform);
- if(profile.position)lines.push("Poste préféré : " + profile.position);
- if(profile.position2)lines.push("Poste secondaire : " + profile.position2);
- if(profile.availability)lines.push("Disponibilités : " + profile.availability);
-
- return lines.join("\n");
-}
-
-async function copyText(text){
- try{
-  await navigator.clipboard.writeText(text);
-  return true;
- }catch(error){
-  // Solution de secours pour les navigateurs sans accès au presse-papiers
-  const area = document.createElement("textarea");
-
-  area.value = text;
-  area.style.position = "fixed";
-  area.style.opacity = "0";
-
-  document.body.appendChild(area);
-  area.select();
-
-  let done = false;
-
-  try{
-   done = document.execCommand("copy");
-  }catch(copyError){}
-
-  area.remove();
-
-  return done;
- }
-}
-
-if(playerPanel && playerForm){
- playerForm.addEventListener("submit",(e)=>{
-  e.preventDefault();
-
-  try{
-   localStorage.setItem(PLAYER_KEY,JSON.stringify(readPlayerForm()));
-   setPlayerStatus("Profil enregistré sur cet appareil ✔");
-  }catch(error){
-   setPlayerStatus("Impossible d'enregistrer le profil sur cet appareil.");
-  }
- });
-
- if(playerCopy){
-  playerCopy.addEventListener("click",async ()=>{
-   const profile = readPlayerForm();
-
-   if(!profile.gamertag){
-    setPlayerStatus("Renseigne d'abord ton gamertag.");
-    return;
-   }
-
-   const copied = await copyText(buildApplicationText(profile));
-
-   setPlayerStatus(
-    copied
-     ? "Candidature copiée ✔ Colle-la sur le Discord du club."
-     : "Copie impossible : sélectionne et copie les infos à la main."
-   );
-  });
- }
-
- if(playerClose){
-  playerClose.addEventListener("click",closePlayerProfile);
- }
-
- playerPanel.addEventListener("click",(e)=>{
-  if(e.target === playerPanel)closePlayerProfile();
- });
-}
-
-function closeProfileMenus(){
- document.querySelectorAll(".discord-menu-wrap.open").forEach(wrap=>{
-  wrap.classList.remove("open");
-
-  const button = wrap.querySelector(".discord-account");
-
-  if(button){
-   button.setAttribute("aria-expanded","false");
-  }
- });
-}
-
-document.addEventListener("click",(e)=>{
- if(!e.target.closest(".discord-menu-wrap")){
-  closeProfileMenus();
- }
-});
-
-function createMenuItem(tag,icon,label){
- const item = document.createElement(tag);
-
- item.className = "dropdown-item";
- item.setAttribute("role","menuitem");
-
- if(tag === "button"){
-  item.type = "button";
- }
-
- const iconElement = document.createElement("span");
-
- iconElement.className = "dropdown-icon";
- iconElement.textContent = icon;
-
- const labelElement = document.createElement("span");
-
- labelElement.textContent = label;
-
- item.append(iconElement,labelElement);
-
- return item;
-}
-
-function showDiscordLogin(container){
- container.replaceChildren();
-
- const login = document.createElement("a");
-
- login.className = "discord-login";
- login.href = "discord-login.php";
- login.textContent = "◉ SE CONNECTER AVEC DISCORD";
-
- container.appendChild(login);
-}
-
-loadDiscordAccount();
-
-
-/* =====================================
-   CONFIGURATION EA SPORTS FC 27
-===================================== */
-
-const clubId = "350967";
-const platform = "common-gen5";
-
-const apiUrl =
- "https://proclubs.ea.com/api/fc/allTimeLeaderboard/search"+
- "?platform="+platform+
- "&clubName=PROFIL%20BAS%20FC&maxResultCount=100";
-
-
-/* =====================================
-   STATISTIQUES DU CLUB
-===================================== */
-
-function updateStat(id,value){
- if(value === undefined || value === null)return;
-
- const element = document.getElementById(id);
-
- if(element){
-  element.textContent = value;
- }
-}
-
-async function loadClubStats(){
- const status = document.getElementById("stats-status");
-
- if(status){
-  status.textContent = "Connexion aux données EA FC 27...";
- }
-
- const controller = new AbortController();
-
- const timeout = setTimeout(()=>{
-  controller.abort();
- },8000);
-
- try{
-  const response = await fetch(apiUrl,{
-   cache:"no-store",
-   signal:controller.signal
-  });
-
-  clearTimeout(timeout);
-
-  if(!response.ok){
-   throw new Error("Erreur EA : "+response.status);
-  }
-
-  const data = await response.json();
-
-  if(!Array.isArray(data)){
-   throw new Error("Format de réponse EA invalide.");
-  }
-
-  const club = data.find(item=>
-   String(item.clubId) === clubId
-  );
-
-  if(!club){
-   throw new Error("Club introuvable.");
-  }
-
-  updateStat("games",club.gamesPlayed);
-  updateStat("wins",club.wins);
-  updateStat("losses",club.losses);
-  updateStat("ties",club.ties);
-  updateStat("goals",club.goals);
-  updateStat("against",club.goalsAgainst);
-  updateStat("clean",club.cleanSheets);
-  updateStat("points",club.points);
-  updateStat("division",club.bestDivision);
-
-  if(status){
-   status.textContent = "Statistiques récupérées depuis EA FC 27.";
-  }
-
- }catch(error){
-  clearTimeout(timeout);
-
-  console.error("Erreur statistiques EA :",error);
-
-  if(status){
-   status.textContent =
-    "Actualisation indisponible. Dernières données affichées.";
-  }
- }
-}
-
-/* Chargement des statistiques sans bloquer le site */
-if(document.readyState === "loading"){
- document.addEventListener("DOMContentLoaded",loadClubStats);
-}else{
- loadClubStats();
-}
-
-/* Actualisation toutes les 15 minutes */
-setInterval(()=>{
- if(settings.autoRefresh){
-  loadClubStats();
- }
-},900000);
-
-</script>
 
 <button class="to-top" id="toTop" type="button" aria-label="Retour en haut">↑</button>
 
 <script>
-/* =====================================
-   EFFECTIF, ANIMATIONS, NAVIGATION
-   (script séparé : indépendant du reste du site)
-===================================== */
-(function(){
- const DISCORD_URL = "https://discord.gg/uUpRre9b4P";
+"use strict";
 
- /* ---------- EFFECTIF : MODIFIE CETTE LISTE ----------
-    name     = pseudo du joueur
-    position = BU, AG, AD, MOC, MC, MDC, DC, DG, DD, GB
-    role     = CAPITAINE, JOUEUR, RECRUE...                */
- const squad = [
-  {name:"PSEUDO 1",position:"BU",role:"CAPITAINE"},
-  {name:"PSEUDO 2",position:"MOC",role:"JOUEUR"},
-  {name:"PSEUDO 3",position:"MC",role:"JOUEUR"},
-  {name:"PSEUDO 4",position:"DC",role:"JOUEUR"},
-  {name:"PSEUDO 5",position:"GB",role:"JOUEUR"}
- ];
+/* PARAMÈTRES LOCAUX */
+const SETTINGS_KEY = "pbf_settings";
+const PLAYER_KEY = "pbf_player_profile";
+const defaultSettings = {reduceMotion:false,autoRefresh:true,showLoader:true};
 
- function el(tag,className,text){
-  const node = document.createElement(tag);
+function readLocalJSON(key,fallback){
+    try{
+        const value = JSON.parse(localStorage.getItem(key) || "null");
+        return value && typeof value === "object" ? value : fallback;
+    }catch(error){ return fallback; }
+}
+function loadSettings(){
+    return {...defaultSettings,...readLocalJSON(SETTINGS_KEY,{})};
+}
+let settings = loadSettings();
+function saveSettings(){
+    try{ localStorage.setItem(SETTINGS_KEY,JSON.stringify(settings)); }
+    catch(error){ console.warn("Enregistrement des paramètres impossible.",error); }
+}
+function applySettings(){
+    document.documentElement.classList.toggle("reduce-motion",Boolean(settings.reduceMotion));
+}
+applySettings();
 
-  node.className = className;
-
-  if(text !== undefined){
-   node.textContent = text;
-  }
-
-  return node;
- }
-
- function initials(name){
-  const parts = String(name).trim().split(/\s+/).filter(Boolean);
-
-  return parts.slice(0,2).map(part=>part[0]).join("").toUpperCase() || "?";
- }
-
- const grid = document.getElementById("squadGrid");
-
- if(grid){
-  squad.forEach(player=>{
-   const card = el("div","player-card");
-
-   card.append(
-    el("span","pc-pos",player.position),
-    el("span","pc-role",player.role),
-    el("div","pc-avatar",initials(player.name)),
-    el("div","pc-name",player.name),
-    el("div","pc-meta","PROFIL BAS FC")
-   );
-
-   grid.appendChild(card);
-  });
-
-  const slot = el("a","player-card open-slot");
-
-  slot.href = DISCORD_URL;
-  slot.target = "_blank";
-  slot.rel = "noopener noreferrer";
-
-  slot.append(
-   el("div","pc-avatar","?"),
-   el("div","pc-name","TA PLACE"),
-   el("div","pc-meta","REJOINS LE CLUB ↗")
-  );
-
-  grid.appendChild(slot);
- }
-
- /* ---------- Apparition au défilement ---------- */
- const revealSelector = [
-  ".section-heading",
-  ".club-text",
-  ".club-values",
-  ".stats-grid",
-  ".division-box",
-  ".refresh-btn",
-  ".cards",
-  ".squad-grid",
-  ".faq-list",
-  ".recruitment > *"
- ].join(",");
-
- const revealItems = Array.from(document.querySelectorAll(revealSelector));
-
- function showItem(item){
-  item.classList.add("visible");
-
-  // On retire la classe ensuite pour rendre ses transitions d'origine à l'élément
-  setTimeout(()=>{
-   item.classList.remove("reveal","visible");
-  },1000);
- }
-
- if("IntersectionObserver" in window){
-  const observer = new IntersectionObserver((entries)=>{
-   entries.forEach(entry=>{
-    if(entry.isIntersecting){
-     showItem(entry.target);
-     observer.unobserve(entry.target);
+/* LOADER : durée courte, sans retarder le chargement de la page */
+(function initLoader(){
+    const loader = document.getElementById("loader");
+    if(!loader) return;
+    if(!settings.showLoader){
+        loader.remove();
+        return;
     }
-   });
-  },{threshold:0.12});
+    const fill = document.getElementById("loaderProgress");
+    const percent = document.getElementById("loaderPercent");
+    let value = 0;
+    let finished = false;
+    const started = performance.now();
 
-  revealItems.forEach(item=>{
-   item.classList.add("reveal");
-   observer.observe(item);
-  });
- }
+    const progressTimer = setInterval(()=>{
+        value = Math.min(value + (value < 65 ? 8 : 2),92);
+        if(fill) fill.style.width = value + "%";
+        if(percent) percent.textContent = Math.floor(value) + "%";
+    },90);
 
- /* ---------- Barre de progression, menu actif, retour en haut ---------- */
- const progress = document.getElementById("scrollProgress");
- const toTop = document.getElementById("toTop");
- const navLinks = Array.from(document.querySelectorAll("nav a[href^='#']"));
- const navTargets = navLinks.map(link=>document.querySelector(link.getAttribute("href")));
+    function hide(){
+        if(finished) return;
+        finished = true;
+        clearInterval(progressTimer);
+        const wait = Math.max(0,650 - (performance.now() - started));
+        setTimeout(()=>{
+            if(fill) fill.style.width = "100%";
+            if(percent) percent.textContent = "100%";
+            loader.classList.add("hide");
+            setTimeout(()=>loader.remove(),700);
+        },wait);
+    }
+    if(document.readyState === "complete") hide();
+    else window.addEventListener("load",hide,{once:true});
+    setTimeout(hide,3500);
+})();
 
- function updateActiveNav(){
-  let current = -1;
+/* UTILITAIRES DOM */
+const $ = (selector,root=document)=>root.querySelector(selector);
+const $$ = (selector,root=document)=>Array.from(root.querySelectorAll(selector));
 
-  navTargets.forEach((target,index)=>{
-   if(target && target.getBoundingClientRect().top <= 140){
-    current = index;
-   }
-  });
+/* MENU DISCORD */
+function createMenuItem(tag,icon,label){
+    const item = document.createElement(tag);
+    item.className = "dropdown-item";
+    item.setAttribute("role","menuitem");
+    if(tag === "button") item.type = "button";
+    const iconElement = document.createElement("span");
+    iconElement.className = "dropdown-icon";
+    iconElement.textContent = icon;
+    const labelElement = document.createElement("span");
+    labelElement.textContent = label;
+    item.append(iconElement,labelElement);
+    return item;
+}
+function showDiscordLogin(container){
+    container.replaceChildren();
+    const login = document.createElement("a");
+    login.className = "discord-login";
+    login.href = "discord-login.php";
+    login.textContent = "◉ SE CONNECTER AVEC DISCORD";
+    container.appendChild(login);
+}
+function closeProfileMenus(){
+    $$(".discord-menu-wrap.open").forEach(wrap=>{
+        wrap.classList.remove("open");
+        const button = $(".discord-account",wrap);
+        if(button) button.setAttribute("aria-expanded","false");
+    });
+}
+async function loadDiscordAccount(){
+    const container = $("#discordAuth");
+    if(!container) return;
+    const controller = new AbortController();
+    const timeout = setTimeout(()=>controller.abort(),6000);
+    try{
+        const response = await fetch("discord-me.php",{
+            cache:"no-store",
+            credentials:"same-origin",
+            headers:{"Accept":"application/json"},
+            signal:controller.signal
+        });
+        if(!response.ok) throw new Error("Discord HTTP "+response.status);
+        const data = await response.json();
+        const connected = Boolean(data.loggedIn || data.connected);
+        const user = data.user || data;
+        if(!connected){
+            showDiscordLogin(container);
+            return;
+        }
 
-  navLinks.forEach((link,index)=>{
-   link.classList.toggle("active",index === current);
-  });
- }
+        container.replaceChildren();
+        const wrap = document.createElement("div");
+        wrap.className = "discord-menu-wrap";
+        const account = document.createElement("button");
+        account.type = "button";
+        account.className = "discord-account";
+        account.setAttribute("aria-haspopup","true");
+        account.setAttribute("aria-expanded","false");
 
- let ticking = false;
+        const discordId = user.id || data.id || "";
+        let avatarUrl = user.avatar || data.avatar || "";
+        if(avatarUrl && !/^https?:\/\//i.test(avatarUrl) && user.id){
+            avatarUrl = `https://cdn.discordapp.com/avatars/${encodeURIComponent(user.id)}/${encodeURIComponent(avatarUrl)}.png`;
+        }
+        if(avatarUrl){
+            const avatar = document.createElement("img");
+            avatar.className = "discord-avatar";
+            avatar.src = avatarUrl;
+            avatar.alt = "Avatar Discord";
+            avatar.loading = "lazy";
+            avatar.onerror = ()=>avatar.remove();
+            account.appendChild(avatar);
+        }
+        const username = document.createElement("span");
+        username.className = "discord-username";
+        username.textContent = data.displayName || user.global_name || user.username || "Joueur";
+        account.append(username);
+        const chevron = document.createElement("span");
+        chevron.className = "discord-chevron";
+        chevron.textContent = "▾";
+        account.append(chevron);
 
- function onScroll(){
-  if(ticking)return;
+        const menu = document.createElement("div");
+        menu.className = "discord-dropdown";
+        menu.setAttribute("role","menu");
+        const head = document.createElement("div");
+        head.className = "dropdown-head";
+        head.textContent = "MON COMPTE";
+        menu.append(head);
 
-  ticking = true;
+        if(discordId){
+            const profileLink = createMenuItem("a","👤","Mon profil Discord");
+            profileLink.href = "https://discord.com/users/"+encodeURIComponent(discordId);
+            profileLink.target = "_blank";
+            profileLink.rel = "noopener noreferrer";
+            menu.append(profileLink);
+        }
+        if(avatarUrl){
+            const enlarge = createMenuItem("button","🔍","Agrandir ma photo");
+            enlarge.addEventListener("click",()=>{
+                closeProfileMenus();
+                openLightbox(avatarUrl);
+            });
+            menu.append(enlarge);
+        }
+        const playerItem = createMenuItem("button","🎮","Mon profil joueur");
+        playerItem.addEventListener("click",()=>{
+            closeProfileMenus();
+            openPlayerProfile();
+        });
+        menu.append(playerItem);
 
-  requestAnimationFrame(()=>{
-   ticking = false;
+        const clubDiscord = createMenuItem("a","🎧","Discord du club");
+        clubDiscord.href = "https://discord.gg/uUpRre9b4P";
+        clubDiscord.target = "_blank";
+        clubDiscord.rel = "noopener noreferrer";
+        menu.append(clubDiscord);
 
-   const max = document.documentElement.scrollHeight - window.innerHeight;
-   const ratio = max > 0 ? window.scrollY / max : 0;
+        const settingsItem = createMenuItem("button","⚙️","Paramètres");
+        settingsItem.addEventListener("click",()=>{
+            closeProfileMenus();
+            openSettings();
+        });
+        menu.append(settingsItem);
 
-   if(progress){
-    progress.style.width = (ratio * 100) + "%";
-   }
+        const divider = document.createElement("div");
+        divider.className = "dropdown-divider";
+        menu.append(divider);
+        const logout = createMenuItem("a","🚪","Déconnexion");
+        logout.classList.add("danger");
+        logout.href = "discord-logout.php";
+        menu.append(logout);
 
-   if(toTop){
-    toTop.classList.toggle("show",window.scrollY > 600);
-   }
+        account.addEventListener("click",event=>{
+            event.stopPropagation();
+            const isOpen = wrap.classList.toggle("open");
+            account.setAttribute("aria-expanded",String(isOpen));
+        });
+        wrap.append(account,menu);
+        container.append(wrap);
+    }catch(error){
+        console.error("Erreur connexion Discord :",error);
+        showDiscordLogin(container);
+    }finally{
+        clearTimeout(timeout);
+    }
+}
+document.addEventListener("click",event=>{
+    if(!event.target.closest(".discord-menu-wrap")) closeProfileMenus();
+});
 
-   updateActiveNav();
-  });
- }
+/* LIGHTBOX */
+const lightbox = $("#lightbox");
+const lightboxImg = $("#lightboxImg");
+function openLightbox(url){
+    if(!lightbox || !lightboxImg || !url) return;
+    let safeUrl;
+    try{
+        const parsed = new URL(url,location.href);
+        if(!["https:","http:"].includes(parsed.protocol)) return;
+        safeUrl = parsed.href;
+    }catch(error){ return; }
+    if(safeUrl.includes("cdn.discordapp.com")){
+        const parsed = new URL(safeUrl);
+        parsed.searchParams.set("size","512");
+        safeUrl = parsed.href;
+    }
+    lightboxImg.src = safeUrl;
+    lightbox.classList.add("open");
+    lightbox.setAttribute("aria-hidden","false");
+}
+function closeLightbox(){
+    if(!lightbox) return;
+    lightbox.classList.remove("open");
+    lightbox.setAttribute("aria-hidden","true");
+    if(lightboxImg) lightboxImg.removeAttribute("src");
+}
+if(lightbox){
+    lightbox.addEventListener("click",event=>{
+        if(event.target === lightbox || event.target.closest(".lightbox-close")) closeLightbox();
+    });
+}
 
- window.addEventListener("scroll",onScroll,{passive:true});
- window.addEventListener("resize",onScroll);
+/* PARAMÈTRES */
+const settingsPanel = $("#settings");
+const settingInputs = {
+    reduceMotion:$("#setReduceMotion"),
+    autoRefresh:$("#setAutoRefresh"),
+    showLoader:$("#setShowLoader")
+};
+Object.entries(settingInputs).forEach(([key,input])=>{
+    if(!input) return;
+    input.checked = Boolean(settings[key]);
+    input.addEventListener("change",()=>{
+        settings[key] = input.checked;
+        saveSettings();
+        applySettings();
+    });
+});
+function openSettings(){
+    if(!settingsPanel) return;
+    settingsPanel.classList.add("open");
+    settingsPanel.setAttribute("aria-hidden","false");
+}
+function closeSettings(){
+    if(!settingsPanel) return;
+    settingsPanel.classList.remove("open");
+    settingsPanel.setAttribute("aria-hidden","true");
+}
+if(settingsPanel){
+    settingsPanel.addEventListener("click",event=>{
+        if(event.target === settingsPanel) closeSettings();
+    });
+    $(".settings-close",settingsPanel)?.addEventListener("click",closeSettings);
+}
 
- if(toTop){
-  toTop.addEventListener("click",()=>{
-   window.scrollTo({top:0,behavior:"smooth"});
-  });
- }
+/* PROFIL JOUEUR */
+const playerPanel = $("#playerProfile");
+const playerForm = $("#playerForm");
+const playerStatus = $("#pStatus");
+const playerFields = {
+    gamertag:$("#pGamertag"),
+    platform:$("#pPlatform"),
+    position:$("#pPosition"),
+    position2:$("#pPosition2"),
+    availability:$("#pAvailability")
+};
+function loadPlayerProfile(){
+    return readLocalJSON(PLAYER_KEY,{});
+}
+function fillPlayerForm(){
+    const saved = loadPlayerProfile();
+    Object.entries(playerFields).forEach(([key,field])=>{
+        if(field && typeof saved[key] === "string") field.value = saved[key];
+    });
+}
+function readPlayerForm(){
+    return Object.fromEntries(Object.entries(playerFields).map(([key,field])=>[key,field ? field.value.trim() : ""]));
+}
+function setPlayerStatus(message){
+    if(playerStatus) playerStatus.textContent = message;
+}
+function openPlayerProfile(){
+    if(!playerPanel) return;
+    fillPlayerForm();
+    setPlayerStatus("");
+    playerPanel.classList.add("open");
+    playerPanel.setAttribute("aria-hidden","false");
+    playerFields.gamertag?.focus();
+}
+function closePlayerProfile(){
+    if(!playerPanel) return;
+    playerPanel.classList.remove("open");
+    playerPanel.setAttribute("aria-hidden","true");
+}
+function buildApplicationText(profile){
+    const lines = ["🎮 Candidature PROFIL BAS FC","Gamertag : "+profile.gamertag];
+    if(profile.platform) lines.push("Plateforme : "+profile.platform);
+    if(profile.position) lines.push("Poste préféré : "+profile.position);
+    if(profile.position2) lines.push("Poste secondaire : "+profile.position2);
+    if(profile.availability) lines.push("Disponibilités : "+profile.availability);
+    return lines.join("\n");
+}
+async function copyText(text){
+    try{
+        if(navigator.clipboard && window.isSecureContext){
+            await navigator.clipboard.writeText(text);
+            return true;
+        }
+    }catch(error){}
+    const area = document.createElement("textarea");
+    area.value = text;
+    area.setAttribute("readonly","");
+    area.style.position = "fixed";
+    area.style.opacity = "0";
+    document.body.append(area);
+    area.select();
+    let copied = false;
+    try{copied = document.execCommand("copy");}catch(error){}
+    area.remove();
+    return copied;
+}
+if(playerForm){
+    playerForm.addEventListener("submit",event=>{
+        event.preventDefault();
+        const profile = readPlayerForm();
+        if(!profile.gamertag){
+            setPlayerStatus("Renseigne d'abord ton gamertag.");
+            playerFields.gamertag?.focus();
+            return;
+        }
+        try{
+            localStorage.setItem(PLAYER_KEY,JSON.stringify(profile));
+            setPlayerStatus("Profil enregistré sur cet appareil ✔");
+        }catch(error){
+            setPlayerStatus("Impossible d'enregistrer le profil sur cet appareil.");
+        }
+    });
+    $("#pCopy")?.addEventListener("click",async()=>{
+        const profile = readPlayerForm();
+        if(!profile.gamertag){
+            setPlayerStatus("Renseigne d'abord ton gamertag.");
+            playerFields.gamertag?.focus();
+            return;
+        }
+        const copied = await copyText(buildApplicationText(profile));
+        setPlayerStatus(copied ? "Candidature copiée ✔ Colle-la sur le Discord du club." : "Copie impossible : sélectionne et copie les infos à la main.");
+    });
+    $("#playerClose")?.addEventListener("click",closePlayerProfile);
+    playerPanel?.addEventListener("click",event=>{
+        if(event.target === playerPanel) closePlayerProfile();
+    });
+}
 
- onScroll();
+/* FERMETURE CLAVIER */
+document.addEventListener("keydown",event=>{
+    if(event.key === "Escape"){
+        closeLightbox();
+        closeSettings();
+        closePlayerProfile();
+        closeProfileMenus();
+    }
+});
+
+/* CONNEXION DISCORD */
+loadDiscordAccount();
+
+/* STATISTIQUES EA FC 27 : PROXY PHP LOCAL */
+const clubId = "350967";
+const platform = "common-gen5";
+const apiUrl = "ea_stats.php";
+let statsRequest = null;
+
+function updateStat(id,value){
+    if(value === undefined || value === null) return;
+    const element = document.getElementById(id);
+    if(element) element.textContent = String(value);
+}
+async function loadClubStats(){
+    if(statsRequest) return statsRequest;
+    const status = $("#stats-status");
+    const refreshButton = $("#refreshStats");
+    if(status) status.textContent = "Connexion aux données EA FC 27...";
+    if(refreshButton){
+        refreshButton.disabled = true;
+        refreshButton.textContent = "CHARGEMENT...";
+    }
+
+    statsRequest = (async()=>{
+        const controller = new AbortController();
+        const timeout = setTimeout(()=>controller.abort(),20000);
+        try{
+            const response = await fetch(apiUrl,{
+                method:"GET",
+                cache:"no-store",
+                credentials:"same-origin",
+                headers:{"Accept":"application/json"},
+                signal:controller.signal
+            });
+            if(!response.ok) throw new Error("Erreur du serveur : "+response.status);
+            const data = await response.json();
+            if(!Array.isArray(data)) throw new Error(data.error || "Format de réponse EA invalide.");
+            const club = data.find(item=>String(item.clubId) === clubId);
+            if(!club) throw new Error("Club introuvable dans les données EA.");
+
+            const stats = {
+                games:club.gamesPlayed,
+                wins:club.wins,
+                losses:club.losses,
+                ties:club.ties,
+                goals:club.goals,
+                against:club.goalsAgainst,
+                clean:club.cleanSheets,
+                points:club.points,
+                division:club.bestDivision
+            };
+            Object.entries(stats).forEach(([id,value])=>updateStat(id,value));
+            if(status) status.textContent = "✓ Statistiques récupérées depuis EA FC 27.";
+        }catch(error){
+            console.error("Erreur statistiques EA :",error);
+            if(status){
+                status.textContent = error.name === "AbortError"
+                    ? "Le serveur met trop de temps à répondre. Réessaie dans quelques instants."
+                    : "Actualisation indisponible. Dernières données affichées.";
+            }
+        }finally{
+            clearTimeout(timeout);
+        }
+    })();
+
+    try{
+        await statsRequest;
+    }finally{
+        statsRequest = null;
+        if(refreshButton){
+            refreshButton.disabled = false;
+            refreshButton.textContent = "↻ ACTUALISER LES STATISTIQUES";
+        }
+    }
+}
+$("#refreshStats")?.addEventListener("click",loadClubStats);
+function scheduleStatsRefresh(){
+    if(settings.autoRefresh) loadClubStats();
+}
+if(document.readyState === "loading"){
+    document.addEventListener("DOMContentLoaded",scheduleStatsRefresh,{once:true});
+}else{
+    scheduleStatsRefresh();
+}
+setInterval(()=>{
+    if(settings.autoRefresh && document.visibilityState === "visible") loadClubStats();
+},900000);
+
+/* EFFECTIF */
+(function renderSquad(){
+    const DISCORD_URL = "https://discord.gg/uUpRre9b4P";
+    const squad = [
+        {name:"PSEUDO 1",position:"BU",role:"CAPITAINE"},
+        {name:"PSEUDO 2",position:"MOC",role:"JOUEUR"},
+        {name:"PSEUDO 3",position:"MC",role:"JOUEUR"},
+        {name:"PSEUDO 4",position:"DC",role:"JOUEUR"},
+        {name:"PSEUDO 5",position:"GB",role:"JOUEUR"}
+    ];
+    const grid = $("#squadGrid");
+    if(!grid) return;
+    const makeElement = (tag,className,text)=>{
+        const node = document.createElement(tag);
+        node.className = className;
+        if(text !== undefined) node.textContent = text;
+        return node;
+    };
+    const initials = name=>String(name).trim().split(/\s+/).filter(Boolean).slice(0,2).map(part=>part[0]).join("").toUpperCase() || "?";
+    const fragment = document.createDocumentFragment();
+    squad.forEach(player=>{
+        const card = makeElement("div","player-card");
+        card.append(
+            makeElement("span","pc-pos",player.position),
+            makeElement("span","pc-role",player.role),
+            makeElement("div","pc-avatar",initials(player.name)),
+            makeElement("div","pc-name",player.name),
+            makeElement("div","pc-meta","PROFIL BAS FC")
+        );
+        fragment.append(card);
+    });
+    const slot = makeElement("a","player-card open-slot");
+    slot.href = DISCORD_URL;
+    slot.target = "_blank";
+    slot.rel = "noopener noreferrer";
+    slot.append(makeElement("div","pc-avatar","?"),makeElement("div","pc-name","TA PLACE"),makeElement("div","pc-meta","REJOINS LE CLUB ↗"));
+    fragment.append(slot);
+    grid.append(fragment);
+})();
+
+/* APPARITION AU DÉFILEMENT */
+(function initReveal(){
+    const selector = ".section-heading,.club-text,.club-values,.stats-grid,.division-box,.refresh-btn,.cards,.squad-grid,.faq-list,.recruitment > *";
+    const items = $$(selector);
+    if(!("IntersectionObserver" in window) || settings.reduceMotion){
+        items.forEach(item=>item.classList.add("visible"));
+        return;
+    }
+    const observer = new IntersectionObserver((entries,obs)=>{
+        entries.forEach(entry=>{
+            if(entry.isIntersecting){
+                entry.target.classList.add("visible");
+                obs.unobserve(entry.target);
+            }
+        });
+    },{threshold:.12});
+    items.forEach(item=>{
+        item.classList.add("reveal");
+        observer.observe(item);
+    });
+})();
+
+/* BARRE DE PROGRESSION, NAV ACTIVE, RETOUR HAUT */
+(function initScrollUI(){
+    const progress = $("#scrollProgress");
+    const toTop = $("#toTop");
+    const navLinks = $$("nav a[href^='#']");
+    const navTargets = navLinks.map(link=>document.querySelector(link.getAttribute("href")));
+    let ticking = false;
+
+    function update(){
+        ticking = false;
+        const doc = document.documentElement;
+        const maxScroll = doc.scrollHeight - window.innerHeight;
+        const ratio = maxScroll > 0 ? window.scrollY / maxScroll : 0;
+        if(progress) progress.style.width = (ratio * 100) + "%";
+        if(toTop) toTop.classList.toggle("show",window.scrollY > 600);
+        let current = -1;
+        navTargets.forEach((target,index)=>{
+            if(target && target.getBoundingClientRect().top <= 140) current = index;
+        });
+        navLinks.forEach((link,index)=>link.classList.toggle("active",index === current));
+    }
+    function onScroll(){
+        if(ticking) return;
+        ticking = true;
+        requestAnimationFrame(update);
+    }
+    window.addEventListener("scroll",onScroll,{passive:true});
+    window.addEventListener("resize",onScroll,{passive:true});
+    toTop?.addEventListener("click",()=>{
+        window.scrollTo({top:0,behavior:settings.reduceMotion ? "auto" : "smooth"});
+    });
+    update();
 })();
 </script>
-
 </body>
 </html>
