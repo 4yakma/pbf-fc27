@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -6,6 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#08090c">
 <title>PROFIL BAS FC | Club Pro FC 27</title>
+
+<meta name="description" content="PROFIL BAS FC : club Pro Clubs sur EA SPORTS FC 27. Le collectif avant les individualités. Rejoins l'aventure !">
+<meta property="og:type" content="website">
+<meta property="og:title" content="PROFIL BAS FC | Club Pro Clubs FC 27">
+<meta property="og:description" content="Le collectif avant les individualités. Une équipe, une ambition, une identité. Rejoins PROFIL BAS FC !">
+<meta property="og:image" content="https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=1200">
+<meta name="twitter:card" content="summary_large_image">
+
+<script>document.documentElement.classList.add("js");</script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -69,6 +77,24 @@ body:before{
 a{text-decoration:none;color:inherit}
 button{font-family:inherit}
 ::selection{background:var(--yellow);color:#08090c}
+
+/* Texte non sélectionnable (les champs de saisie restent utilisables) */
+html,body{
+ -webkit-user-select:none;
+ -moz-user-select:none;
+ user-select:none;
+ -webkit-touch-callout:none;
+}
+
+input,textarea,select{
+ -webkit-user-select:text;
+ -moz-user-select:text;
+ user-select:text;
+}
+
+img{
+ -webkit-user-drag:none;
+}
 
 header,.hero,.ticker,section,footer{
  width:100%;
@@ -354,13 +380,346 @@ nav a:hover:after{width:100%}
  transform:translateY(-2px);
 }
 
+.discord-menu-wrap{
+ position:relative;
+}
+
 .discord-account{
  display:flex;
  align-items:center;
  gap:9px;
  background:#171a22;
  border:1px solid var(--border);
+ color:inherit;
+ font-family:inherit;
  padding:6px 10px;
+ cursor:pointer;
+ transition:.2s;
+}
+
+.discord-account:hover,
+.discord-menu-wrap.open .discord-account{
+ border-color:#5865f2;
+ background:#1e2230;
+}
+
+.discord-chevron{
+ font-size:11px;
+ color:var(--muted);
+ transition:transform .2s;
+}
+
+.discord-menu-wrap.open .discord-chevron{
+ transform:rotate(180deg);
+}
+
+/* MENU DÉROULANT PROFIL */
+.discord-dropdown{
+ position:absolute;
+ top:calc(100% + 10px);
+ right:0;
+ min-width:230px;
+ padding:8px;
+ background:#12141b;
+ border:1px solid rgba(245,237,0,.35);
+ box-shadow:0 18px 50px rgba(0,0,0,.6),var(--glow);
+ opacity:0;
+ visibility:hidden;
+ transform:translateY(-8px);
+ transition:opacity .2s ease,transform .2s ease,visibility .2s ease;
+ z-index:1100;
+}
+
+.discord-menu-wrap.open .discord-dropdown{
+ opacity:1;
+ visibility:visible;
+ transform:translateY(0);
+}
+
+.dropdown-head{
+ padding:10px 12px 12px;
+ margin-bottom:6px;
+ border-bottom:1px solid var(--border);
+ font-size:9px;
+ font-weight:900;
+ letter-spacing:2px;
+ color:var(--yellow);
+}
+
+.dropdown-item{
+ display:flex;
+ align-items:center;
+ gap:12px;
+ width:100%;
+ padding:11px 12px;
+ background:transparent;
+ border:none;
+ color:#d5d7de;
+ font-family:inherit;
+ font-size:11px;
+ font-weight:700;
+ text-align:left;
+ cursor:pointer;
+ transition:.15s;
+}
+
+.dropdown-item:hover{
+ background:rgba(245,237,0,.08);
+ color:var(--yellow);
+}
+
+.dropdown-icon{
+ width:18px;
+ text-align:center;
+ font-size:14px;
+}
+
+.dropdown-divider{
+ height:1px;
+ margin:6px 0;
+ background:var(--border);
+}
+
+.dropdown-item.danger:hover{
+ background:rgba(255,70,70,.1);
+ color:#ff6b6b;
+}
+
+/* PANNEAU PARAMÈTRES */
+#settings,
+#playerProfile{
+ position:fixed;
+ inset:0;
+ z-index:100000;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ padding:20px;
+ background:rgba(7,8,11,.88);
+ backdrop-filter:blur(8px);
+ opacity:0;
+ visibility:hidden;
+ transition:opacity .25s ease,visibility .25s ease;
+}
+
+#settings.open,
+#playerProfile.open{
+ opacity:1;
+ visibility:visible;
+}
+
+.settings-box{
+ width:min(440px,100%);
+ max-height:calc(100vh - 40px);
+ overflow-y:auto;
+ scrollbar-width:none;
+ background:linear-gradient(145deg,#191c25,#101218);
+ border:1px solid rgba(245,237,0,.4);
+ box-shadow:var(--glow);
+ transform:translateY(14px);
+ transition:transform .25s ease;
+}
+
+#settings.open .settings-box,
+#playerProfile.open .settings-box{
+ transform:translateY(0);
+}
+
+.settings-head{
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ padding:20px 24px;
+ border-bottom:1px solid var(--border);
+}
+
+.settings-head strong{
+ font-family:"Barlow Condensed",sans-serif;
+ font-size:28px;
+ font-style:italic;
+ color:var(--yellow);
+}
+
+.settings-close{
+ background:none;
+ border:none;
+ color:var(--muted);
+ font-size:20px;
+ cursor:pointer;
+ transition:.2s;
+}
+
+.settings-close:hover{color:var(--yellow)}
+
+.setting-row{
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ gap:18px;
+ padding:18px 24px;
+ border-bottom:1px solid var(--border);
+ cursor:pointer;
+}
+
+.setting-row:last-of-type{border-bottom:none}
+
+.setting-row b{
+ display:block;
+ font-size:12px;
+ margin-bottom:4px;
+}
+
+.setting-row small{
+ font-size:10px;
+ line-height:1.6;
+ color:var(--muted);
+}
+
+.setting-row input{
+ position:absolute;
+ opacity:0;
+ pointer-events:none;
+}
+
+.switch{
+ position:relative;
+ flex-shrink:0;
+ width:44px;
+ height:24px;
+ background:#2a2d38;
+ border-radius:24px;
+ transition:.2s;
+}
+
+.switch:after{
+ content:"";
+ position:absolute;
+ top:3px;
+ left:3px;
+ width:18px;
+ height:18px;
+ border-radius:50%;
+ background:#fff;
+ transition:.2s;
+}
+
+.setting-row input:checked + .switch{
+ background:var(--yellow);
+}
+
+.setting-row input:checked + .switch:after{
+ transform:translateX(20px);
+ background:#08090c;
+}
+
+.setting-row input:focus-visible + .switch{
+ outline:2px solid var(--yellow);
+ outline-offset:2px;
+}
+
+.settings-note{
+ padding:14px 24px 20px;
+ font-size:9px;
+ letter-spacing:1px;
+ color:#666a76;
+}
+
+/* PROFIL JOUEUR */
+.player-form{
+ padding:20px 24px 6px;
+ display:flex;
+ flex-direction:column;
+ gap:14px;
+}
+
+.player-form label{
+ display:flex;
+ flex-direction:column;
+ gap:7px;
+ font-size:9px;
+ font-weight:900;
+ letter-spacing:1.5px;
+ color:var(--muted);
+}
+
+.player-form input,
+.player-form select{
+ padding:12px 13px;
+ background:#0b0c11;
+ border:1px solid var(--border);
+ color:#fff;
+ font-family:inherit;
+ font-size:12px;
+ outline:none;
+ transition:.2s;
+}
+
+.player-form input:focus,
+.player-form select:focus{
+ border-color:var(--yellow);
+}
+
+.player-form select option{
+ background:#0b0c11;
+ color:#fff;
+}
+
+.player-actions{
+ display:flex;
+ flex-wrap:wrap;
+ gap:10px;
+ margin-top:4px;
+}
+
+.player-actions button{
+ flex:1;
+ min-width:140px;
+ padding:13px 14px;
+ font-family:inherit;
+ font-size:10px;
+ font-weight:900;
+ letter-spacing:1px;
+ cursor:pointer;
+ transition:.2s;
+}
+
+.btn-save{
+ background:var(--yellow);
+ border:1px solid var(--yellow);
+ color:#08090c;
+}
+
+.btn-save:hover{
+ background:#fff;
+ border-color:#fff;
+}
+
+.btn-copy{
+ background:transparent;
+ border:1px solid rgba(245,237,0,.6);
+ color:var(--yellow);
+}
+
+.btn-copy:hover{
+ background:var(--yellow);
+ color:#08090c;
+}
+
+.player-status{
+ min-height:16px;
+ font-size:10px;
+ color:var(--yellow);
+}
+
+/* OPTION : RÉDUIRE LES ANIMATIONS */
+html.reduce-motion{scroll-behavior:auto}
+
+html.reduce-motion *,
+html.reduce-motion *:before,
+html.reduce-motion *:after{
+ animation-duration:.01ms!important;
+ animation-iteration-count:1!important;
+ transition-duration:.01ms!important;
 }
 
 .discord-avatar{
@@ -369,6 +728,64 @@ nav a:hover:after{width:100%}
  border-radius:50%;
  object-fit:cover;
  border:2px solid #5865f2;
+}
+
+.discord-avatar{
+ flex-shrink:0;
+}
+
+.discord-avatar-unused{
+ display:none;
+}
+
+/* AGRANDISSEMENT IMAGE (LIGHTBOX) */
+#lightbox{
+ position:fixed;
+ inset:0;
+ z-index:100000;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ padding:24px;
+ background:rgba(7,8,11,.92);
+ backdrop-filter:blur(8px);
+ opacity:0;
+ visibility:hidden;
+ cursor:zoom-out;
+ transition:opacity .25s ease,visibility .25s ease;
+}
+
+#lightbox.open{
+ opacity:1;
+ visibility:visible;
+}
+
+#lightbox img{
+ max-width:min(90vw,520px);
+ max-height:80vh;
+ border-radius:50%;
+ border:3px solid #5865f2;
+ box-shadow:0 0 60px rgba(88,101,242,.35);
+ object-fit:cover;
+ transform:scale(.9);
+ transition:transform .25s ease;
+}
+
+#lightbox.open img{
+ transform:scale(1);
+}
+
+.lightbox-close{
+ position:absolute;
+ top:22px;
+ right:26px;
+ color:var(--yellow);
+ font-size:30px;
+ font-weight:900;
+ line-height:1;
+ cursor:pointer;
+ background:none;
+ border:none;
 }
 
 .discord-username{
@@ -986,6 +1403,284 @@ footer{
  letter-spacing:1px;
 }
 
+/* BARRE DE PROGRESSION + MENU ACTIF */
+.scroll-progress{
+ position:fixed;
+ top:0;
+ left:0;
+ width:0;
+ height:3px;
+ background:var(--yellow);
+ box-shadow:0 0 12px var(--yellow);
+ z-index:1200;
+ transition:width .1s linear;
+ pointer-events:none;
+}
+
+nav a.active{color:var(--yellow)}
+nav a.active:after{width:100%}
+
+/* APPARITION AU DÉFILEMENT */
+.js .reveal{
+ opacity:0;
+ transform:translateY(34px);
+ transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1);
+}
+
+.js .reveal.visible{
+ opacity:1;
+ transform:none;
+}
+
+/* EFFECTIF */
+.squad-section{
+ background:
+ radial-gradient(ellipse at 50% 0,rgba(245,237,0,.07),transparent 55%),
+ #0b0c11;
+}
+
+.squad-grid{
+ display:grid;
+ grid-template-columns:repeat(auto-fill,minmax(210px,1fr));
+ gap:18px;
+ max-width:1150px;
+ margin:auto;
+}
+
+.player-card{
+ position:relative;
+ overflow:hidden;
+ display:flex;
+ flex-direction:column;
+ align-items:center;
+ padding:62px 20px 28px;
+ text-align:center;
+ background:linear-gradient(160deg,#1c1f2a,#0f1117);
+ border:1px solid var(--border);
+ transition:.25s;
+}
+
+.player-card:before{
+ content:"";
+ position:absolute;
+ right:-45px;
+ top:-45px;
+ width:110px;
+ height:110px;
+ background:rgba(245,237,0,.06);
+ transform:rotate(45deg);
+}
+
+.player-card:after{
+ content:"";
+ position:absolute;
+ left:0;
+ bottom:0;
+ width:100%;
+ height:4px;
+ background:var(--yellow);
+ transform:scaleX(0);
+ transition:.25s;
+}
+
+.player-card:hover{
+ border-color:var(--yellow);
+ transform:translateY(-8px);
+ box-shadow:var(--glow);
+}
+
+.player-card:hover:after{transform:scaleX(1)}
+
+.pc-pos{
+ position:absolute;
+ top:16px;
+ left:18px;
+ font-family:"Barlow Condensed",sans-serif;
+ font-size:38px;
+ font-weight:900;
+ font-style:italic;
+ line-height:1;
+ color:var(--yellow);
+}
+
+.pc-role{
+ position:absolute;
+ top:20px;
+ right:16px;
+ z-index:1;
+ padding:5px 8px;
+ border:1px solid rgba(245,237,0,.45);
+ font-size:8px;
+ font-weight:900;
+ letter-spacing:1.5px;
+ color:var(--yellow);
+}
+
+.pc-avatar{
+ width:104px;
+ height:104px;
+ margin-bottom:18px;
+ display:grid;
+ place-items:center;
+ border-radius:50%;
+ background:
+ radial-gradient(circle at 30% 25%,rgba(245,237,0,.32),rgba(245,237,0,.04) 62%),
+ #151821;
+ border:2px solid rgba(245,237,0,.5);
+ font-family:"Barlow Condensed",sans-serif;
+ font-size:42px;
+ font-weight:900;
+ font-style:italic;
+ color:var(--yellow);
+ box-shadow:0 0 30px rgba(245,237,0,.1);
+}
+
+.pc-name{
+ font-family:"Barlow Condensed",sans-serif;
+ font-size:27px;
+ font-weight:900;
+ font-style:italic;
+ text-transform:uppercase;
+ letter-spacing:.5px;
+ overflow-wrap:anywhere;
+}
+
+.pc-meta{
+ margin-top:7px;
+ font-size:9px;
+ font-weight:900;
+ letter-spacing:2px;
+ color:var(--muted);
+}
+
+.player-card.open-slot{
+ justify-content:center;
+ padding-top:28px;
+ background:rgba(245,237,0,.03);
+ border:1px dashed rgba(245,237,0,.5);
+}
+
+.player-card.open-slot .pc-avatar{
+ border-style:dashed;
+ background:transparent;
+}
+
+.player-card.open-slot .pc-meta{color:var(--yellow)}
+
+/* FAQ */
+.faq-section{
+ background:
+ radial-gradient(ellipse at 50% 100%,rgba(245,237,0,.05),transparent 55%),
+ #11141b;
+}
+
+.faq-list{
+ max-width:820px;
+ margin:auto;
+ display:flex;
+ flex-direction:column;
+ gap:12px;
+}
+
+.faq-item{
+ background:linear-gradient(145deg,#191c25,#101218);
+ border:1px solid var(--border);
+ transition:.25s;
+}
+
+.faq-item:hover{border-color:rgba(245,237,0,.35)}
+
+.faq-item[open]{
+ border-color:rgba(245,237,0,.55);
+ box-shadow:var(--glow);
+}
+
+.faq-item summary{
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ gap:16px;
+ padding:20px 24px;
+ font-size:13px;
+ font-weight:800;
+ list-style:none;
+ cursor:pointer;
+}
+
+.faq-item summary::-webkit-details-marker{display:none}
+
+.faq-item summary:after{
+ content:"+";
+ flex-shrink:0;
+ width:28px;
+ height:28px;
+ display:grid;
+ place-items:center;
+ border:1px solid rgba(245,237,0,.5);
+ color:var(--yellow);
+ font-size:18px;
+ font-weight:700;
+ transition:.25s;
+}
+
+.faq-item[open] summary:after{
+ content:"–";
+ background:var(--yellow);
+ color:#08090c;
+}
+
+.faq-item p{
+ padding:0 24px 22px;
+ font-size:12px;
+ line-height:1.9;
+ color:#aeb1bb;
+}
+
+/* RETOUR EN HAUT */
+.to-top{
+ position:fixed;
+ right:24px;
+ bottom:24px;
+ z-index:1400;
+ width:50px;
+ height:50px;
+ display:grid;
+ place-items:center;
+ background:var(--yellow);
+ color:#08090c;
+ border:none;
+ font-size:20px;
+ font-weight:900;
+ cursor:pointer;
+ clip-path:polygon(0 0,calc(100% - 12px) 0,100% 12px,100% 100%,12px 100%,0 calc(100% - 12px));
+ opacity:0;
+ visibility:hidden;
+ transform:translateY(14px);
+ transition:.25s;
+}
+
+.to-top.show{
+ opacity:1;
+ visibility:visible;
+ transform:none;
+}
+
+.to-top.show:hover{
+ background:#fff;
+ transform:translateY(-4px);
+}
+
+@media(max-width:700px){
+ .squad-grid{grid-template-columns:repeat(2,1fr);gap:12px}
+ .player-card{padding:56px 12px 22px}
+ .pc-avatar{width:84px;height:84px;font-size:34px}
+ .pc-name{font-size:22px}
+ .pc-role{display:none}
+ .faq-item summary{padding:16px 18px;font-size:12px}
+ .faq-item p{padding:0 18px 18px}
+ .to-top{right:16px;bottom:16px}
+}
+
 /* ANIMATIONS */
 @keyframes appear{
  from{opacity:0;transform:translateY(25px)}
@@ -1030,6 +1725,12 @@ footer{
  .discord-auth{
   width:100%;
   justify-content:center;
+ }
+
+ .discord-dropdown{
+  right:auto;
+  left:50%;
+  margin-left:-115px;
  }
 
  .hero{
@@ -1086,6 +1787,8 @@ footer{
 
 <body>
 
+<div class="scroll-progress" id="scrollProgress"></div>
+
 <!-- LOADER -->
 <div id="loader">
  <div class="loader-bg"></div>
@@ -1131,6 +1834,8 @@ footer{
   <a href="#club">LE CLUB</a>
   <a href="#statistiques">STATISTIQUES</a>
   <a href="#effectif">POSTES</a>
+  <a href="#joueurs">EFFECTIF</a>
+  <a href="#faq">FAQ</a>
   <a href="#recrutement">RECRUTEMENT</a>
  </nav>
 
@@ -1310,6 +2015,53 @@ footer{
  </div>
 </section>
 
+<!-- EFFECTIF -->
+<section class="squad-section" id="joueurs">
+ <div class="section-heading">
+  <div class="section-kicker">LE GROUPE</div>
+  <h2>NOTRE <span>EFFECTIF</span></h2>
+  <p>Les joueurs qui portent les couleurs de PROFIL BAS FC.</p>
+ </div>
+
+ <div class="squad-grid" id="squadGrid"></div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section" id="faq">
+ <div class="section-heading">
+  <div class="section-kicker">BESOIN D'INFOS ?</div>
+  <h2>QUESTIONS <span>FRÉQUENTES</span></h2>
+  <p>Tout ce qu'il faut savoir avant de nous rejoindre.</p>
+ </div>
+
+ <div class="faq-list">
+  <details class="faq-item">
+   <summary>Comment postuler au club ?</summary>
+   <p>Rejoins notre Discord et présente-toi : ton gamertag, ta plateforme, ton poste préféré et tes disponibilités. Une fois connecté avec Discord, tu peux aussi préparer ta candidature depuis « Mon profil joueur » dans le menu de ton compte, puis la coller sur le serveur.</p>
+  </details>
+
+  <details class="faq-item">
+   <summary>Quels postes puis-je jouer ?</summary>
+   <p>Tous les postes existent dans le club : attaque, milieu, défense et gardien. Indique ton poste préféré et un poste secondaire, le staff te répondra selon les besoins du moment.</p>
+  </details>
+
+  <details class="faq-item">
+   <summary>Quel est l'état d'esprit du club ?</summary>
+   <p>Le collectif avant les individualités. On joue pour progresser ensemble, construire une vraie équipe et donner le maximum sur chaque match, dans le respect de chacun.</p>
+  </details>
+
+  <details class="faq-item">
+   <summary>Où voir les statistiques du club ?</summary>
+   <p>Dans la section Statistiques de cette page. Elles viennent des données EA SPORTS FC 27 et se mettent à jour automatiquement, ou à la demande avec le bouton « Actualiser les statistiques ».</p>
+  </details>
+
+  <details class="faq-item">
+   <summary>Comment contacter le staff ?</summary>
+   <p>Directement sur notre serveur Discord, via le bouton « Rejoindre le club ». C'est le moyen le plus rapide pour poser une question ou candidater.</p>
+  </details>
+ </div>
+</section>
+
 <!-- RECRUTEMENT -->
 <section class="recruitment" id="recrutement">
  <div class="section-kicker">RECRUTEMENT OUVERT</div>
@@ -1328,18 +2080,175 @@ footer{
 <!-- FOOTER -->
 <footer>
  <div class="footer-logo">PROFIL <span>BAS FC</span></div>
- <div class="footer-copy">© 2026 PROFIL BAS FC — TOUS DROITS RÉSERVÉS</div>
+ <div class="footer-copy">© 2026 PROFIL BAS FC — TOUS DROITS RÉSERVÉS / BY YAHKMA</div>
 </footer>
+
+<!-- PROFIL JOUEUR -->
+<div id="playerProfile" aria-hidden="true">
+ <div class="settings-box" role="dialog" aria-label="Mon profil joueur">
+  <div class="settings-head">
+   <strong>MON PROFIL JOUEUR</strong>
+   <button class="settings-close" id="playerClose" type="button" aria-label="Fermer">✕</button>
+  </div>
+
+  <form class="player-form" id="playerForm" autocomplete="off">
+   <label>
+    GAMERTAG / PSN / EA ID
+    <input type="text" id="pGamertag" maxlength="40" placeholder="Ton pseudo en jeu">
+   </label>
+
+   <label>
+    PLATEFORME
+    <select id="pPlatform">
+     <option value="">Non précisée</option>
+     <option value="PlayStation 5">PlayStation 5</option>
+     <option value="Xbox Series">Xbox Series</option>
+     <option value="PC">PC</option>
+    </select>
+   </label>
+
+   <label>
+    POSTE PRÉFÉRÉ
+    <select id="pPosition">
+     <option value="">Non précisé</option>
+     <option value="BU">BU — Buteur</option>
+     <option value="AG">AG — Ailier gauche</option>
+     <option value="AD">AD — Ailier droit</option>
+     <option value="MOC">MOC — Milieu offensif</option>
+     <option value="MC">MC — Milieu central</option>
+     <option value="MDC">MDC — Milieu défensif</option>
+     <option value="DG">DG — Défenseur gauche</option>
+     <option value="DD">DD — Défenseur droit</option>
+     <option value="DC">DC — Défenseur central</option>
+     <option value="GB">GB — Gardien</option>
+    </select>
+   </label>
+
+   <label>
+    POSTE SECONDAIRE
+    <select id="pPosition2">
+     <option value="">Aucun</option>
+     <option value="BU">BU — Buteur</option>
+     <option value="AG">AG — Ailier gauche</option>
+     <option value="AD">AD — Ailier droit</option>
+     <option value="MOC">MOC — Milieu offensif</option>
+     <option value="MC">MC — Milieu central</option>
+     <option value="MDC">MDC — Milieu défensif</option>
+     <option value="DG">DG — Défenseur gauche</option>
+     <option value="DD">DD — Défenseur droit</option>
+     <option value="DC">DC — Défenseur central</option>
+     <option value="GB">GB — Gardien</option>
+    </select>
+   </label>
+
+   <label>
+    DISPONIBILITÉS
+    <input type="text" id="pAvailability" maxlength="80" placeholder="Ex : soirs en semaine, week-end">
+   </label>
+
+   <div class="player-actions">
+    <button type="submit" class="btn-save">ENREGISTRER</button>
+    <button type="button" class="btn-copy" id="pCopy">COPIER MA CANDIDATURE</button>
+   </div>
+
+   <div class="player-status" id="pStatus"></div>
+  </form>
+
+  <div class="settings-note">PROFIL ENREGISTRÉ SUR CET APPAREIL. COLLE TA CANDIDATURE SUR LE DISCORD DU CLUB.</div>
+ </div>
+</div>
+
+<!-- PARAMÈTRES -->
+<div id="settings" aria-hidden="true">
+ <div class="settings-box" role="dialog" aria-label="Paramètres">
+  <div class="settings-head">
+   <strong>PARAMÈTRES</strong>
+   <button class="settings-close" type="button" aria-label="Fermer">✕</button>
+  </div>
+
+  <label class="setting-row">
+   <span>
+    <b>Réduire les animations</b>
+    <small>Désactive les effets de mouvement du site.</small>
+   </span>
+   <input type="checkbox" id="setReduceMotion">
+   <span class="switch"></span>
+  </label>
+
+  <label class="setting-row">
+   <span>
+    <b>Actualisation automatique des stats</b>
+    <small>Met à jour les statistiques du club toutes les 15 minutes.</small>
+   </span>
+   <input type="checkbox" id="setAutoRefresh">
+   <span class="switch"></span>
+  </label>
+
+  <label class="setting-row">
+   <span>
+    <b>Écran de chargement</b>
+    <small>Affiche l'intro PBF à l'ouverture du site (prend effet à la prochaine visite).</small>
+   </span>
+   <input type="checkbox" id="setShowLoader">
+   <span class="switch"></span>
+  </label>
+
+  <div class="settings-note">LES PARAMÈTRES SONT ENREGISTRÉS SUR CET APPAREIL.</div>
+ </div>
+</div>
+
+<!-- LIGHTBOX -->
+<div id="lightbox" aria-hidden="true">
+ <button class="lightbox-close" type="button" aria-label="Fermer">✕</button>
+ <img id="lightboxImg" src="" alt="Avatar Discord agrandi">
+</div>
 
 <script>
 /* =====================================
    LOADER PREMIUM - ANTI CHARGEMENT INFINI
 ===================================== */
 
+/* Paramètres utilisateur (enregistrés sur l'appareil) */
+const SETTINGS_KEY = "pbf_settings";
+const defaultSettings = {
+ reduceMotion:false,
+ autoRefresh:true,
+ showLoader:true
+};
+
+function loadSettings(){
+ try{
+  return Object.assign(
+   {},
+   defaultSettings,
+   JSON.parse(localStorage.getItem(SETTINGS_KEY) || "{}")
+  );
+ }catch(error){
+  return Object.assign({},defaultSettings);
+ }
+}
+
+function saveSettings(value){
+ try{
+  localStorage.setItem(SETTINGS_KEY,JSON.stringify(value));
+ }catch(error){}
+}
+
+let settings = loadSettings();
+
+function applySettings(){
+ document.documentElement.classList.toggle(
+  "reduce-motion",
+  Boolean(settings.reduceMotion)
+ );
+}
+
+applySettings();
+
 let loaderHidden = false;
 let loaderValue = 0;
 const loaderStartedAt = Date.now();
-const loaderMinimumTime = 1200;
+const loaderMinimumTime = settings.showLoader ? 1200 : 0;
 
 const loaderProgress = document.getElementById("loaderProgress");
 const loaderPercent = document.getElementById("loaderPercent");
@@ -1444,8 +2353,17 @@ async function loadDiscordAccount(){
   const user = data.user || data;
 
   if(response.ok && connected){
-   const account = document.createElement("div");
+   // Le bloc avatar + pseudo est maintenant un lien vers le profil Discord
+   const wrap = document.createElement("div");
+   wrap.className = "discord-menu-wrap";
+
+   const account = document.createElement("button");
+   account.type = "button";
    account.className = "discord-account";
+   account.setAttribute("aria-haspopup","true");
+   account.setAttribute("aria-expanded","false");
+
+   const discordId = user.id || data.id || "";
 
    let avatarUrl = user.avatar || data.avatar || "";
 
@@ -1482,13 +2400,95 @@ async function loadDiscordAccount(){
 
    account.appendChild(username);
 
-   const logout = document.createElement("a");
+   const chevron = document.createElement("span");
 
-   logout.className = "discord-logout";
+   chevron.className = "discord-chevron";
+   chevron.textContent = "▾";
+
+   account.appendChild(chevron);
+
+   /* Menu déroulant du profil */
+   const menu = document.createElement("div");
+
+   menu.className = "discord-dropdown";
+   menu.setAttribute("role","menu");
+
+   const head = document.createElement("div");
+
+   head.className = "dropdown-head";
+   head.textContent = "MON COMPTE";
+
+   menu.appendChild(head);
+
+   if(discordId){
+    const profileLink = createMenuItem("a","👤","Mon profil Discord");
+
+    profileLink.href =
+     "https://discord.com/users/" + encodeURIComponent(discordId);
+    profileLink.target = "_blank";
+    profileLink.rel = "noopener noreferrer";
+
+    menu.appendChild(profileLink);
+   }
+
+   if(avatarUrl){
+    const enlarge = createMenuItem("button","🔍","Agrandir ma photo");
+
+    enlarge.addEventListener("click",()=>{
+     closeProfileMenus();
+     openLightbox(avatarUrl);
+    });
+
+    menu.appendChild(enlarge);
+   }
+
+   const playerItem = createMenuItem("button","🎮","Mon profil joueur");
+
+   playerItem.addEventListener("click",()=>{
+    closeProfileMenus();
+    openPlayerProfile();
+   });
+
+   menu.appendChild(playerItem);
+
+   const clubDiscord = createMenuItem("a","🎧","Discord du club");
+
+   clubDiscord.href = "https://discord.gg/uUpRre9b4P";
+   clubDiscord.target = "_blank";
+   clubDiscord.rel = "noopener noreferrer";
+
+   menu.appendChild(clubDiscord);
+
+   const settingsItem = createMenuItem("button","⚙️","Paramètres");
+
+   settingsItem.addEventListener("click",()=>{
+    closeProfileMenus();
+    openSettings();
+   });
+
+   menu.appendChild(settingsItem);
+
+   const divider = document.createElement("div");
+
+   divider.className = "dropdown-divider";
+   menu.appendChild(divider);
+
+   const logout = createMenuItem("a","🚪","Déconnexion");
+
+   logout.classList.add("danger");
    logout.href = "discord-logout.php";
-   logout.textContent = "DÉCONNEXION";
 
-   container.append(account,logout);
+   menu.appendChild(logout);
+
+   account.addEventListener("click",(e)=>{
+    e.stopPropagation();
+
+    const isOpen = wrap.classList.toggle("open");
+    account.setAttribute("aria-expanded",String(isOpen));
+   });
+
+   wrap.append(account,menu);
+   container.appendChild(wrap);
 
   }else{
    showDiscordLogin(container);
@@ -1498,6 +2498,296 @@ async function loadDiscordAccount(){
   console.error("Erreur connexion Discord :",error);
   showDiscordLogin(container);
  }
+}
+
+/* =====================================
+   AGRANDIR L'IMAGE (LIGHTBOX)
+===================================== */
+
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = document.getElementById("lightboxImg");
+
+function openLightbox(url){
+ if(!lightbox || !lightboxImg || !url)return;
+
+ // Version haute définition de l'avatar Discord
+ const bigUrl = url.includes("cdn.discordapp.com")
+  ? url.split("?")[0] + "?size=512"
+  : url;
+
+ lightboxImg.src = bigUrl;
+ lightbox.classList.add("open");
+ lightbox.setAttribute("aria-hidden","false");
+}
+
+function closeLightbox(){
+ if(!lightbox)return;
+
+ lightbox.classList.remove("open");
+ lightbox.setAttribute("aria-hidden","true");
+}
+
+if(lightbox){
+ lightbox.addEventListener("click",closeLightbox);
+}
+
+document.addEventListener("keydown",(e)=>{
+ if(e.key === "Escape"){
+  closeLightbox();
+  closeSettings();
+  closePlayerProfile();
+  closeProfileMenus();
+ }
+});
+
+
+/* =====================================
+   MENU PROFIL + PARAMÈTRES
+===================================== */
+
+const settingsPanel = document.getElementById("settings");
+
+const settingInputs = {
+ reduceMotion:document.getElementById("setReduceMotion"),
+ autoRefresh:document.getElementById("setAutoRefresh"),
+ showLoader:document.getElementById("setShowLoader")
+};
+
+Object.keys(settingInputs).forEach(key=>{
+ const input = settingInputs[key];
+
+ if(!input)return;
+
+ input.checked = Boolean(settings[key]);
+
+ input.addEventListener("change",()=>{
+  settings[key] = input.checked;
+  saveSettings(settings);
+  applySettings();
+ });
+});
+
+function openSettings(){
+ if(!settingsPanel)return;
+
+ settingsPanel.classList.add("open");
+ settingsPanel.setAttribute("aria-hidden","false");
+}
+
+function closeSettings(){
+ if(!settingsPanel)return;
+
+ settingsPanel.classList.remove("open");
+ settingsPanel.setAttribute("aria-hidden","true");
+}
+
+if(settingsPanel){
+ settingsPanel.addEventListener("click",(e)=>{
+  if(e.target === settingsPanel)closeSettings();
+ });
+
+ const settingsClose = settingsPanel.querySelector(".settings-close");
+
+ if(settingsClose){
+  settingsClose.addEventListener("click",closeSettings);
+ }
+}
+
+/* ---------- Profil joueur (enregistré sur l'appareil) ---------- */
+
+const PLAYER_KEY = "pbf_player_profile";
+
+const playerPanel = document.getElementById("playerProfile");
+const playerForm = document.getElementById("playerForm");
+const playerStatus = document.getElementById("pStatus");
+const playerCopy = document.getElementById("pCopy");
+const playerClose = document.getElementById("playerClose");
+
+const playerFields = {
+ gamertag:document.getElementById("pGamertag"),
+ platform:document.getElementById("pPlatform"),
+ position:document.getElementById("pPosition"),
+ position2:document.getElementById("pPosition2"),
+ availability:document.getElementById("pAvailability")
+};
+
+function loadPlayerProfile(){
+ try{
+  const saved = JSON.parse(localStorage.getItem(PLAYER_KEY) || "{}");
+
+  return saved && typeof saved === "object" ? saved : {};
+ }catch(error){
+  return {};
+ }
+}
+
+function fillPlayerForm(){
+ const saved = loadPlayerProfile();
+
+ Object.keys(playerFields).forEach(key=>{
+  const field = playerFields[key];
+
+  if(field && typeof saved[key] === "string"){
+   field.value = saved[key];
+  }
+ });
+}
+
+function readPlayerForm(){
+ const values = {};
+
+ Object.keys(playerFields).forEach(key=>{
+  const field = playerFields[key];
+
+  values[key] = field ? field.value.trim() : "";
+ });
+
+ return values;
+}
+
+function setPlayerStatus(text){
+ if(playerStatus){
+  playerStatus.textContent = text;
+ }
+}
+
+function openPlayerProfile(){
+ if(!playerPanel)return;
+
+ fillPlayerForm();
+ setPlayerStatus("");
+
+ playerPanel.classList.add("open");
+ playerPanel.setAttribute("aria-hidden","false");
+}
+
+function closePlayerProfile(){
+ if(!playerPanel)return;
+
+ playerPanel.classList.remove("open");
+ playerPanel.setAttribute("aria-hidden","true");
+}
+
+function buildApplicationText(profile){
+ const lines = ["🎮 Candidature PROFIL BAS FC"];
+
+ lines.push("Gamertag : " + profile.gamertag);
+
+ if(profile.platform)lines.push("Plateforme : " + profile.platform);
+ if(profile.position)lines.push("Poste préféré : " + profile.position);
+ if(profile.position2)lines.push("Poste secondaire : " + profile.position2);
+ if(profile.availability)lines.push("Disponibilités : " + profile.availability);
+
+ return lines.join("\n");
+}
+
+async function copyText(text){
+ try{
+  await navigator.clipboard.writeText(text);
+  return true;
+ }catch(error){
+  // Solution de secours pour les navigateurs sans accès au presse-papiers
+  const area = document.createElement("textarea");
+
+  area.value = text;
+  area.style.position = "fixed";
+  area.style.opacity = "0";
+
+  document.body.appendChild(area);
+  area.select();
+
+  let done = false;
+
+  try{
+   done = document.execCommand("copy");
+  }catch(copyError){}
+
+  area.remove();
+
+  return done;
+ }
+}
+
+if(playerPanel && playerForm){
+ playerForm.addEventListener("submit",(e)=>{
+  e.preventDefault();
+
+  try{
+   localStorage.setItem(PLAYER_KEY,JSON.stringify(readPlayerForm()));
+   setPlayerStatus("Profil enregistré sur cet appareil ✔");
+  }catch(error){
+   setPlayerStatus("Impossible d'enregistrer le profil sur cet appareil.");
+  }
+ });
+
+ if(playerCopy){
+  playerCopy.addEventListener("click",async ()=>{
+   const profile = readPlayerForm();
+
+   if(!profile.gamertag){
+    setPlayerStatus("Renseigne d'abord ton gamertag.");
+    return;
+   }
+
+   const copied = await copyText(buildApplicationText(profile));
+
+   setPlayerStatus(
+    copied
+     ? "Candidature copiée ✔ Colle-la sur le Discord du club."
+     : "Copie impossible : sélectionne et copie les infos à la main."
+   );
+  });
+ }
+
+ if(playerClose){
+  playerClose.addEventListener("click",closePlayerProfile);
+ }
+
+ playerPanel.addEventListener("click",(e)=>{
+  if(e.target === playerPanel)closePlayerProfile();
+ });
+}
+
+function closeProfileMenus(){
+ document.querySelectorAll(".discord-menu-wrap.open").forEach(wrap=>{
+  wrap.classList.remove("open");
+
+  const button = wrap.querySelector(".discord-account");
+
+  if(button){
+   button.setAttribute("aria-expanded","false");
+  }
+ });
+}
+
+document.addEventListener("click",(e)=>{
+ if(!e.target.closest(".discord-menu-wrap")){
+  closeProfileMenus();
+ }
+});
+
+function createMenuItem(tag,icon,label){
+ const item = document.createElement(tag);
+
+ item.className = "dropdown-item";
+ item.setAttribute("role","menuitem");
+
+ if(tag === "button"){
+  item.type = "button";
+ }
+
+ const iconElement = document.createElement("span");
+
+ iconElement.className = "dropdown-icon";
+ iconElement.textContent = icon;
+
+ const labelElement = document.createElement("span");
+
+ labelElement.textContent = label;
+
+ item.append(iconElement,labelElement);
+
+ return item;
 }
 
 function showDiscordLogin(container){
@@ -1615,8 +2905,183 @@ if(document.readyState === "loading"){
 }
 
 /* Actualisation toutes les 15 minutes */
-setInterval(loadClubStats,900000);
+setInterval(()=>{
+ if(settings.autoRefresh){
+  loadClubStats();
+ }
+},900000);
 
+</script>
+
+<button class="to-top" id="toTop" type="button" aria-label="Retour en haut">↑</button>
+
+<script>
+/* =====================================
+   EFFECTIF, ANIMATIONS, NAVIGATION
+   (script séparé : indépendant du reste du site)
+===================================== */
+(function(){
+ const DISCORD_URL = "https://discord.gg/uUpRre9b4P";
+
+ /* ---------- EFFECTIF : MODIFIE CETTE LISTE ----------
+    name     = pseudo du joueur
+    position = BU, AG, AD, MOC, MC, MDC, DC, DG, DD, GB
+    role     = CAPITAINE, JOUEUR, RECRUE...                */
+ const squad = [
+  {name:"PSEUDO 1",position:"BU",role:"CAPITAINE"},
+  {name:"PSEUDO 2",position:"MOC",role:"JOUEUR"},
+  {name:"PSEUDO 3",position:"MC",role:"JOUEUR"},
+  {name:"PSEUDO 4",position:"DC",role:"JOUEUR"},
+  {name:"PSEUDO 5",position:"GB",role:"JOUEUR"}
+ ];
+
+ function el(tag,className,text){
+  const node = document.createElement(tag);
+
+  node.className = className;
+
+  if(text !== undefined){
+   node.textContent = text;
+  }
+
+  return node;
+ }
+
+ function initials(name){
+  const parts = String(name).trim().split(/\s+/).filter(Boolean);
+
+  return parts.slice(0,2).map(part=>part[0]).join("").toUpperCase() || "?";
+ }
+
+ const grid = document.getElementById("squadGrid");
+
+ if(grid){
+  squad.forEach(player=>{
+   const card = el("div","player-card");
+
+   card.append(
+    el("span","pc-pos",player.position),
+    el("span","pc-role",player.role),
+    el("div","pc-avatar",initials(player.name)),
+    el("div","pc-name",player.name),
+    el("div","pc-meta","PROFIL BAS FC")
+   );
+
+   grid.appendChild(card);
+  });
+
+  const slot = el("a","player-card open-slot");
+
+  slot.href = DISCORD_URL;
+  slot.target = "_blank";
+  slot.rel = "noopener noreferrer";
+
+  slot.append(
+   el("div","pc-avatar","?"),
+   el("div","pc-name","TA PLACE"),
+   el("div","pc-meta","REJOINS LE CLUB ↗")
+  );
+
+  grid.appendChild(slot);
+ }
+
+ /* ---------- Apparition au défilement ---------- */
+ const revealSelector = [
+  ".section-heading",
+  ".club-text",
+  ".club-values",
+  ".stats-grid",
+  ".division-box",
+  ".refresh-btn",
+  ".cards",
+  ".squad-grid",
+  ".faq-list",
+  ".recruitment > *"
+ ].join(",");
+
+ const revealItems = Array.from(document.querySelectorAll(revealSelector));
+
+ function showItem(item){
+  item.classList.add("visible");
+
+  // On retire la classe ensuite pour rendre ses transitions d'origine à l'élément
+  setTimeout(()=>{
+   item.classList.remove("reveal","visible");
+  },1000);
+ }
+
+ if("IntersectionObserver" in window){
+  const observer = new IntersectionObserver((entries)=>{
+   entries.forEach(entry=>{
+    if(entry.isIntersecting){
+     showItem(entry.target);
+     observer.unobserve(entry.target);
+    }
+   });
+  },{threshold:0.12});
+
+  revealItems.forEach(item=>{
+   item.classList.add("reveal");
+   observer.observe(item);
+  });
+ }
+
+ /* ---------- Barre de progression, menu actif, retour en haut ---------- */
+ const progress = document.getElementById("scrollProgress");
+ const toTop = document.getElementById("toTop");
+ const navLinks = Array.from(document.querySelectorAll("nav a[href^='#']"));
+ const navTargets = navLinks.map(link=>document.querySelector(link.getAttribute("href")));
+
+ function updateActiveNav(){
+  let current = -1;
+
+  navTargets.forEach((target,index)=>{
+   if(target && target.getBoundingClientRect().top <= 140){
+    current = index;
+   }
+  });
+
+  navLinks.forEach((link,index)=>{
+   link.classList.toggle("active",index === current);
+  });
+ }
+
+ let ticking = false;
+
+ function onScroll(){
+  if(ticking)return;
+
+  ticking = true;
+
+  requestAnimationFrame(()=>{
+   ticking = false;
+
+   const max = document.documentElement.scrollHeight - window.innerHeight;
+   const ratio = max > 0 ? window.scrollY / max : 0;
+
+   if(progress){
+    progress.style.width = (ratio * 100) + "%";
+   }
+
+   if(toTop){
+    toTop.classList.toggle("show",window.scrollY > 600);
+   }
+
+   updateActiveNav();
+  });
+ }
+
+ window.addEventListener("scroll",onScroll,{passive:true});
+ window.addEventListener("resize",onScroll);
+
+ if(toTop){
+  toTop.addEventListener("click",()=>{
+   window.scrollTo({top:0,behavior:"smooth"});
+  });
+ }
+
+ onScroll();
+})();
 </script>
 
 </body>
